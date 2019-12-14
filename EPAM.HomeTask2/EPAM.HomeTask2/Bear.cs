@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EPAM.HomeTusk1.FairyTale
+namespace EPAM.HomeTask2
 {
     class Bear: Animal
     {
         public Bear()
         {
             nameOfAnimal = "медведь";
+            isAppear = isAppearMethod();
         }
 
         public override string generateWayToTravelToTeremok()

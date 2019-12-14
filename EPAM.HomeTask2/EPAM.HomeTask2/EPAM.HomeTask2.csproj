@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FE439D3B-0E05-48AD-AA56-2F2E9157C604}</ProjectGuid>
+    <ProjectGuid>{1FD51E7A-63CF-411B-A9BD-FF1BA2D40477}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>EPAM.HomeTusk1.FairyTale</RootNamespace>
-    <AssemblyName>EPAM.HomeTusk1.FairyTale</AssemblyName>
+    <RootNamespace>EPAM.HomeTask2</RootNamespace>
+    <AssemblyName>EPAM.HomeTask2</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,11 +43,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbstractAnimal.cs" />
     <Compile Include="Animal.cs" />
     <Compile Include="Bear.cs" />
+    <Compile Include="Dinozavr.cs" />
+    <Compile Include="DinozavrException.cs" />
     <Compile Include="Fox.cs" />
     <Compile Include="Frog.cs" />
     <Compile Include="GetRandom.cs" />
+    <Compile Include="IAnimal.cs" />
     <Compile Include="Mouse.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

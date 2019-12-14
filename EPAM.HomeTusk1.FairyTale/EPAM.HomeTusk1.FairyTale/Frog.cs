@@ -24,7 +24,7 @@ namespace EPAM.HomeTusk1.FairyTale
                 "смысл жить вместе? В конце сказки все равно медведь всё разрушит, это естественный отбор."
             };
             
-            return phrases[returnRandom(phrases.Count)];
+            return phrases[GetRandom.returnRandom(phrases.Count)];
         }
 
 
@@ -35,7 +35,7 @@ namespace EPAM.HomeTusk1.FairyTale
                 "вернуться туда, откуда оно взялось, ибо так безопаснее", "заиметь крышу над своей лягушачьей головой"
             };
             
-            value = returnRandom(deals.Count);
+            value = GetRandom.returnRandom(deals.Count);
             //Console.WriteLine(value);
             return deals[value];
         }
@@ -48,7 +48,7 @@ namespace EPAM.HomeTusk1.FairyTale
                 "Подъехал на такси", "Пришел прогулочным шагом", "Подкрался"
             };
             
-            return ways[returnRandom(ways.Count)];
+            return ways[GetRandom.returnRandom(ways.Count)];
         }
     }
 }

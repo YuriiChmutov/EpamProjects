@@ -5,24 +5,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 
-namespace EPAM.HomeTusk1.FairyTale
+namespace EPAM.HomeTask2
 {
     
 
-    class Animal // базовый класс для персонажей сказки
+    class Animal: AbstractAnimal, IAnimal
     {
-       
-       public string nameOfAnimal { get; set; }
-       public string phraseToSpeak { get; set; }
 
-       
-        public string firstPhraseFromAnimal()
+        public virtual bool isAppearMethod()
         {
-            return "- Терем-теремок! Кто в тереме живет?";
+            return true;
         }
+        
 
         public virtual string whatToDo(ref int value) //виртуальный метод, для того, чтобы каждое животное делало свои действия
-        {  // ref (извлекаю ответ песонажа в виде индекса) для того, чтобы в истории можно было работать с выбором животного
+        {                                             // ref (извлекаю ответ песонажа в виде индекса) для того, чтобы в истории можно было работать с выбором животного
             return "О, давай, отличная идея! И стали они дружно все жить."; // 0 - будет обычно вариантом, когда животное не захотело жить в теремочке
         }
 
@@ -32,13 +29,10 @@ namespace EPAM.HomeTusk1.FairyTale
         }
 
         public virtual string generatePhrase() // фраза, которую говорит животное, которое уже живет в теремке
-        {                               //присваиваю ее полю через конструктор в классе наследнике
+        {                                      //присваиваю ее полю через конструктор в классе наследнике
             return new String("What can I say?".ToCharArray());
         }
-
-       //public string generateWayOfSpeaking
-
-        public override string ToString() => $"- Я {nameOfAnimal}";
+     
 
         static void changeConsoleColorMethod()
         {

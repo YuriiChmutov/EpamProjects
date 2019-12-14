@@ -34,7 +34,7 @@ namespace EPAM.HomeTusk1.FairyTale
         public void partOfStoryForEachAnimal(ref string story, List<Animal> teremok, string listOfAnimals,  Animal animal, Animal animal2)
         {
             int answer = 0;
-            story += $"{animal.generateWayToTravelToTeremok()} {animal.nameOfAnimal} и спросил: \n" +
+            story += $"{animal.generateWayToTravelToTeremok()} к теремку {animal.nameOfAnimal} и спросил: \n" +
                 $"{animal.firstPhraseFromAnimal()}\n";
 
             if (teremok.Count != 0)
@@ -77,7 +77,7 @@ namespace EPAM.HomeTusk1.FairyTale
 
             //------------------------МЫШОНОК--------------------------------//
 
-            story += $" {mouse.generateWayToTravelToTeremok()} {mouse.nameOfAnimal} и спросил:\n" +
+            story += $" {mouse.generateWayToTravelToTeremok()} к теремку {mouse.nameOfAnimal} и спросил:\n" +
                 $"{mouse.firstPhraseFromAnimal()}\n" +
                 $"Никто не отзывается. Животное подумало и приняло решение {mouse.whatToDo(ref answer)}.\n";
 
@@ -127,7 +127,8 @@ namespace EPAM.HomeTusk1.FairyTale
 
         public void ShowStory() //выводим сказку в консоль
         {
-            Console.WriteLine(CreateStory()); 
+            Console.WriteLine(CreateStory());
+            //Console.ReadKey();
         }
     }
 }

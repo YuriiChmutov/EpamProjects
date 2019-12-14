@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EPAM.HomeTusk1.FairyTale
+namespace EPAM.HomeTask2
 {
     class Wolf: Animal
     {
@@ -12,6 +12,7 @@ namespace EPAM.HomeTusk1.FairyTale
         {
             nameOfAnimal = "серенький волчонок";
             phraseToSpeak = generatePhrase();
+            isAppear = isAppearMethod();
         }
 
         public override string generatePhrase() // фраза, которую говорит животное, которое уже живет в теремке

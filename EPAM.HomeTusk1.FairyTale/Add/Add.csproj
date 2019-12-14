@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FE439D3B-0E05-48AD-AA56-2F2E9157C604}</ProjectGuid>
+    <ProjectGuid>{497A835D-024E-416B-87AF-A6808917AC03}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>EPAM.HomeTusk1.FairyTale</RootNamespace>
-    <AssemblyName>EPAM.HomeTusk1.FairyTale</AssemblyName>
+    <RootNamespace>Add</RootNamespace>
+    <AssemblyName>Add</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,17 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Animal.cs" />
-    <Compile Include="Bear.cs" />
-    <Compile Include="Fox.cs" />
-    <Compile Include="Frog.cs" />
-    <Compile Include="GetRandom.cs" />
-    <Compile Include="Mouse.cs" />
+    <Compile Include="Figure.cs" />
+    <Compile Include="Krug.cs" />
+    <Compile Include="Kvadrat.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Rabbit.cs" />
-    <Compile Include="StoryClass.cs" />
-    <Compile Include="Wolf.cs" />
+    <Compile Include="PryamoUgol.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -4,18 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EPAM.HomeTusk1.FairyTale
+namespace EPAM.HomeTask2
 {
-    class Wolf: Animal
+    class Frog: Animal
     {
-        public Wolf()
+        
+        public Frog()
         {
-            nameOfAnimal = "серенький волчонок";
+            nameOfAnimal = "лягушонок-квакушонок";
             phraseToSpeak = generatePhrase();
+            isAppear = isAppearMethod();
         }
 
         public override string generatePhrase() // фраза, которую говорит животное, которое уже живет в теремке
-        {                                        //присваиваю ее полю через конструктор в классе наследнике
+        {                                       //присваиваю ее полю через конструктор в классе наследнике
             List<string> phrases = new List<string>()
             {
                 "давай жить вместе!",
@@ -26,14 +28,15 @@ namespace EPAM.HomeTusk1.FairyTale
             return phrases[GetRandom.returnRandom(phrases.Count)];
         }
 
+
         public override string whatToDo(ref int value)
         {
             List<string> deals = new List<string>()
             {
-                "уйти подальше от этой банды", "жить в теремке с кучей новых друзей"
+                "вернуться туда, откуда оно взялось, ибо так безопаснее", "заиметь крышу над своей лягушачьей головой"
             };
+            
             value = GetRandom.returnRandom(deals.Count);
-
             //Console.WriteLine(value);
             return deals[value];
         }
@@ -48,6 +51,5 @@ namespace EPAM.HomeTusk1.FairyTale
             
             return ways[GetRandom.returnRandom(ways.Count)];
         }
-
     }
 }

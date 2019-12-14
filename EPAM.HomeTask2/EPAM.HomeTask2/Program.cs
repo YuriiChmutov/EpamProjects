@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EPAM.HomeTusk1.FairyTale
+namespace EPAM.HomeTask2
 {
     class Program
     {
@@ -12,7 +12,6 @@ namespace EPAM.HomeTusk1.FairyTale
         {
             StoryClass story = new StoryClass();
             story.ShowStory();
-            
         }
     }
 }
