@@ -8,7 +8,7 @@ namespace EPAM.HomeTask2
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             StoryClass story = new StoryClass();
             story.ShowStory();

@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1FD51E7A-63CF-411B-A9BD-FF1BA2D40477}</ProjectGuid>
+    <ProjectGuid>{4DC75AC6-F3EC-457D-BB1F-1831D5D2E66D}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>EPAM.HomeTask2</RootNamespace>
-    <AssemblyName>EPAM.HomeTask2</AssemblyName>
+    <RootNamespace>EPAM.HomeTask3</RootNamespace>
+    <AssemblyName>EPAM.HomeTask3</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,22 +43,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbstractAnimal.cs" />
-    <Compile Include="Animal.cs" />
-    <Compile Include="ArrOperation.cs" />
-    <Compile Include="Bear.cs" />
-    <Compile Include="Dinozavr.cs" />
+    <Compile Include="AnimalsFolder\AbstractAnimal.cs" />
+    <Compile Include="AnimalsFolder\Animal.cs" />
+    <Compile Include="AnimalsFolder\Bear.cs" />
+    <Compile Include="AnimalsFolder\Dinozavr.cs" />
     <Compile Include="DinozavrException.cs" />
-    <Compile Include="Fox.cs" />
-    <Compile Include="Frog.cs" />
+    <Compile Include="AnimalsFolder\Fox.cs" />
+    <Compile Include="AnimalsFolder\Frog.cs" />
     <Compile Include="GetRandom.cs" />
-    <Compile Include="IAnimal.cs" />
-    <Compile Include="Mouse.cs" />
+    <Compile Include="AnimalsFolder\IAnimal.cs" />
+    <Compile Include="AnimalsFolder\Mouse.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Rabbit.cs" />
+    <Compile Include="AnimalsFolder\Rabbit.cs" />
     <Compile Include="StoryClass.cs" />
-    <Compile Include="Wolf.cs" />
+    <Compile Include="AnimalsFolder\Wolf.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

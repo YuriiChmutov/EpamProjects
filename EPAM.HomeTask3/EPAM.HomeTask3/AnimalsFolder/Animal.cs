@@ -5,9 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 
-namespace EPAM.HomeTask2
+namespace EPAM.HomeTask3
 {
-    
+
+    //delegate bool delegateIsAppearMethod();
 
     class Animal: AbstractAnimal, IAnimal
     {

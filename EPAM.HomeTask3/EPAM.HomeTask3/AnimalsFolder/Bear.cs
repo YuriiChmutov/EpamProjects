@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EPAM.HomeTask2
+namespace EPAM.HomeTask3
 {
     class Bear: Animal
     {

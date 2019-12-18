@@ -35,13 +35,25 @@ namespace EPAM.HomeTask2
 
         #region Кусок сказки для животного
         public void partOfStoryForEachAnimal(ref string story, List<Animal> teremok, string listOfAnimals,  Animal animal, Animal animal2)
-        {
-            if (animal == dino) throw new DinozavrException("Ой, а динозавры то вымерли, прости Гена, иди в другую сказку.");
-
+        {           
             int answer = 0;
 
             story += $"{animal.generateWayToTravelToTeremok()} к теремку {animal.nameOfAnimal} и спросил: \n" +
                      $"{animal.firstPhraseFromAnimal()}\n";
+
+
+            //if (animal.generateWayToTravelToTeremok() == "Подъехал на такси" ||
+            //    animal.generateWayToTravelToTeremok() == "Прилетел частным авиорейсом")
+            //{
+
+            //    throw new WayOfTavelException("Стоп! Ошибка! Откуда у животного деньги на проезд?" +
+            //        " Животное пришло к теремку, окей? Тогда продолжаем сказку...\n");
+
+            //}
+
+            if (animal == dino) throw new DinozavrException("\nError: Ой, а динозавры то вымерли, прости Гена," +
+                                                            " иди в другую сказку.\n\n");
+
 
             if (teremok.Count != 0)
             {
@@ -81,7 +93,9 @@ namespace EPAM.HomeTask2
 
             string story = "Стоял в поле теремок.";
 
-            //------------------------МЫШОНОК--------------------------------//
+            
+            #region МЫШОНОК
+
             if (mouse.isAppear)
             {
                 story += $" {mouse.generateWayToTravelToTeremok()} к теремку {mouse.nameOfAnimal} и спросил:\n" +
@@ -91,7 +105,12 @@ namespace EPAM.HomeTask2
                 if (answer != 0) { teremok.Add(mouse); story += $"Теперь теремок не пустой.\n\n"; }
                 else story += $"Так и остался теремок пустым.\n\n";
             }
-            //------------------------ЛЯГУШОНОК--------------------------------//
+
+            #endregion
+
+            
+            #region ЛЯГУШОНОК
+
             if (frog.isAppear)
             {
                 try
@@ -100,11 +119,14 @@ namespace EPAM.HomeTask2
                 }
                 catch (DinozavrException ex)
                 {
-                    story += $"Ошибка: " + ex.Message;
+                    story +=  ex.Message;
+                    
                 }
             }
+            #endregion
 
-            //------------------------ЗАЙКА----------------------------------//
+            
+            #region ЗАЙКА
 
             if (rabbit.isAppear)
             {
@@ -114,11 +136,14 @@ namespace EPAM.HomeTask2
                 }
                 catch(DinozavrException ex)
                 {
-                    story += $"Ошибка: " + ex.Message;
+                    story +=  ex.Message;
+                    
                 }
             }
+            #endregion
+            
 
-            //------------------------ДИНОЗАВР----------------------------------//
+            #region ДИНОЗАВР
 
             if (dino.isAppear)
             {
@@ -128,13 +153,16 @@ namespace EPAM.HomeTask2
                 }
                 catch (DinozavrException ex)
                 {
-                    story += $"{dino.generateWayToTravelToTeremok()} к теремку {dino.nameOfAnimal} и спросил:\n" +
-                            $"{dino.firstPhraseFromAnimal()}\n\n";
-                    story += $"Ошибка: {ex.Message}\n\n";
+                    //story += $"{dino.generateWayToTravelToTeremok()} к теремку {dino.nameOfAnimal} и спросил: \n" +
+                    // $"{dino.firstPhraseFromAnimal()}\n";
+                    story += ex.Message;
                 }
             }
+            #endregion
+            
 
-            //------------------------ЛИСЕНОК----------------------------------//
+            #region ЛИСЕНОК
+
             if (fox.isAppear)
             {
                 try
@@ -143,11 +171,15 @@ namespace EPAM.HomeTask2
                 }
                 catch(DinozavrException ex)
                 {
-                    story += $"Ошибка: " + ex.Message;
+                    story += ex.Message;
+                    
                 }
             }
+            #endregion
+             
 
-            //------------------------ВОЛЧОНОК----------------------------------//
+            #region ВОЛЧОНОК
+
             if (wolf.isAppear)
             {
                 try
@@ -156,14 +188,18 @@ namespace EPAM.HomeTask2
                 }
                 catch(DinozavrException ex)
                 {
-                    story += $"Ошибка: " + ex.Message;
+                    story += ex.Message;
+                    
                 }
             }
+            #endregion
 
-            //------------------------МЕДВЕДЬ----------------------------------//
+            
+            #region МЕДВЕДЬ 
+
             if (bear.isAppear)
             {
-                story += $"{bear.generateWayToTravelToTeremok()} {bear.nameOfAnimal} и спросил:\n" +
+                story += $"{bear.generateWayToTravelToTeremok()} к теремку {bear.nameOfAnimal} и спросил:\n" +
                     $"{animal.firstPhraseFromAnimal()}\n";
                 if (teremok.Count != 0)
                 {
@@ -183,6 +219,8 @@ namespace EPAM.HomeTask2
                     story += $"Никто не отзывается. Медведь ударил лапой по терему и разбил его.\n";
                 }
             }
+            #endregion
+
             return story;
         }
 
