@@ -39,17 +39,6 @@ namespace EPAM.HomeTask4
         }
      
 
-        public static void changeConsoleColorMethod()
-        {
-            Console.ForegroundColor = ConsoleColor.Red;
-        }
-
-        public static void normalColorMethod()
-        {
-            Console.ForegroundColor = ConsoleColor.White;
-        }
-
-
         
     }
 

@@ -159,8 +159,15 @@ namespace EPAM.HomeTask4
             string listOfAnimals = null;
             int answer = 0;
             List<Animal> teremok = new List<Animal>(); //коллекция для фиксирования, кто в теремочке живет
+            List<Animal> animals = new List<Animal>()
+            {
+                frog, rabbit, dino, fox, wolf 
+            }; 
+
 
             string story = "Стоял в поле теремок.";
+
+            
 
             #region МЫШОНОК
 
@@ -170,93 +177,24 @@ namespace EPAM.HomeTask4
 
             story += drawHash();
 
-            #region ЛЯГУШОНОК
 
-            if (frog.isAppear)
+            foreach (var item in animals)
             {
-                try
+                if (item.isAppear)
                 {
-                    partOfStoryForEachAnimal<Animal>(ref story, teremok, listOfAnimals, frog, mouse);
-                }
-                catch (DinozavrException ex)
-                {
-                    story +=  ex.Message;  
+                    try
+                    {
+                        Animal a = item;
+                        partOfStoryForEachAnimal<Animal>(ref story, teremok, listOfAnimals, item, item);
+                        story += drawHash();
+                    }
+                    catch (DinozavrException ex)
+                    {
+                        story += ex.Message;
+                        story += drawHash();
+                    }
                 }
             }
-            #endregion
-
-            story += drawHash();
-
-            #region ЗАЙКА
-
-            if (rabbit.isAppear)
-            {
-                try
-                {
-                    partOfStoryForEachAnimal<Animal>(ref story, teremok, listOfAnimals, rabbit, frog);
-                }
-                catch(DinozavrException ex)
-                {
-                    story +=  ex.Message;
-                    
-                }
-            }
-            #endregion
-
-            story += drawHash();
-
-            #region ДИНОЗАВР
-
-            if (dino.isAppear)
-            {
-                try
-                {
-                    partOfStoryForEachAnimal<Animal>(ref story, teremok, listOfAnimals, dino, rabbit);
-                }
-                catch (DinozavrException ex)
-                {
-                    story += ex.Message;
-                }
-            }
-            #endregion
-
-            story += drawHash();
-
-            #region ЛИСЕНОК
-
-            if (fox.isAppear)
-            {
-                try
-                {
-                    partOfStoryForEachAnimal<Animal>(ref story, teremok, listOfAnimals, fox, rabbit);
-                }
-                catch(DinozavrException ex)
-                {
-                    story += ex.Message;
-                    
-                }
-            }
-            #endregion
-
-            story += drawHash();
-
-            #region ВОЛЧОНОК
-
-            if (wolf.isAppear)
-            {
-                try
-                {
-                    partOfStoryForEachAnimal<Animal>(ref story, teremok, listOfAnimals, wolf, fox);
-                }
-                catch(DinozavrException ex)
-                {
-                    story += ex.Message;
-                    
-                }
-            }
-            #endregion
-
-            story += drawHash();
 
             #region МЕДВЕДЬ 
 
@@ -284,3 +222,91 @@ namespace EPAM.HomeTask4
 //        " Животное пришло к теремку пешком, окей? Тогда продолжаем сказку...\n");
 
 //}
+
+//#region ЛЯГУШОНОК
+
+//if (frog.isAppear)
+//{
+//    try
+//    {
+//        partOfStoryForEachAnimal<Animal>(ref story, teremok, listOfAnimals, frog, mouse);
+//    }
+//    catch (DinozavrException ex)
+//    {
+//        story +=  ex.Message;  
+//    }
+//}
+//#endregion
+
+//story += drawHash();
+
+//#region ЗАЙКА
+
+//if (rabbit.isAppear)
+//{
+//    try
+//    {
+//        partOfStoryForEachAnimal<Animal>(ref story, teremok, listOfAnimals, rabbit, frog);
+//    }
+//    catch(DinozavrException ex)
+//    {
+//        story +=  ex.Message;
+
+//    }
+//}
+//#endregion
+
+//story += drawHash();
+
+//#region ДИНОЗАВР
+
+//if (dino.isAppear)
+//{
+//    try
+//    {
+//        partOfStoryForEachAnimal<Animal>(ref story, teremok, listOfAnimals, dino, rabbit);
+//    }
+//    catch (DinozavrException ex)
+//    {
+//        story += ex.Message;
+//    }
+//}
+//#endregion
+
+//story += drawHash();
+
+//#region ЛИСЕНОК
+
+//if (fox.isAppear)
+//{
+//    try
+//    {
+//        partOfStoryForEachAnimal<Animal>(ref story, teremok, listOfAnimals, fox, rabbit);
+//    }
+//    catch(DinozavrException ex)
+//    {
+//        story += ex.Message;
+
+//    }
+//}
+//#endregion
+
+//story += drawHash();
+
+//#region ВОЛЧОНОК
+
+//if (wolf.isAppear)
+//{
+//    try
+//    {
+//        partOfStoryForEachAnimal<Animal>(ref story, teremok, listOfAnimals, wolf, fox);
+//    }
+//    catch(DinozavrException ex)
+//    {
+//        story += ex.Message;
+
+//    }
+//}
+//#endregion
+
+//story += drawHash();
