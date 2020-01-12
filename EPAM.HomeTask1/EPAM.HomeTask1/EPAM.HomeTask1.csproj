@@ -6,12 +6,13 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{FE439D3B-0E05-48AD-AA56-2F2E9157C604}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>EPAM.HomeTusk1.FairyTale</RootNamespace>
-    <AssemblyName>EPAM.HomeTusk1.FairyTale</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <RootNamespace>EPAM.HomeTask1</RootNamespace>
+    <AssemblyName>EPAM.HomeTask1</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
