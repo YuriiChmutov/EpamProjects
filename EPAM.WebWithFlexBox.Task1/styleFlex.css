@@ -74,6 +74,12 @@ justify-content: center;
 align-items: center;
 }
 
+.block:hover{
+    transition: 0.5s;
+    transform: scale(1.2);
+}
+
+
 .elements1{
     padding-top: 10px;
     color: white;
@@ -146,10 +152,18 @@ align-items: center;
   color: white;
   
 }
+
+.bluePartText .bluePartTextRow3:hover{
+    transition: 0.5s;
+    transform: scale(1.2);
+}
+
 .bluePartText .bluePartTextRow3 img{
     padding-top: 18px;
     
 }
+
+
 
 .bluePartForm{
     
@@ -195,6 +209,11 @@ align-items: center;
     flex-direction: column;
     align-items: center;
     
+}
+
+.bluePartFormRow3 img:hover{
+    transition: 0.5s;
+    transform: scale(1.2);
 }
 
 .bluePartFormText1{
@@ -244,6 +263,8 @@ align-items: center;
     color: #b0b0b0;
     font-weight: bold;
     box-shadow: 0 0 10px rgba(0,0, 0, 0.2) ;
+    transition: 0.5s;
+    transform: scale(1.2);
 }
 
 .bluePartFormText2 input:focus{
@@ -262,6 +283,8 @@ align-items: center;
     color: #b0b0b0;
     font-weight: bold;
     box-shadow: 0 0 10px rgba(0,0, 0, 0.2) ;
+    transition: 1s;
+    transform: scale(1.2);
 }
 
 .bluePartFormText5 input{
@@ -297,6 +320,8 @@ align-items: center;
     justify-content: center;
     align-content: center;
     box-shadow: 0 0 10px rgba(0,0, 0, 0.4) ;
+    transition: 0.5s;
+    transform: scale(1.2);
 }
 
 .bluePartFormText5 input:visited{
@@ -389,19 +414,22 @@ align-items: center;
     box-shadow: 0 0 10px #de2b24 ;
     border-color: black;
     background-color: #515151;
+    transition: 0.5s;
+    transform: scale(1.1);
 }
 
 .blackPartRow4 input:focus{
     padding-left: 2%;
     border:none;
-    height: 50px;
-    width: 700px;
+    
     font-size: 15px;
     font-family: Calibri;
     
     box-shadow: 0 0 10px #de2b24 ;
     border-color: black;
     background-color: #515151;
+    transition: 0.5s;
+    transform: scale(1.1);
 }
 
 .blackPartRow5{
@@ -435,6 +463,8 @@ margin: auto;
     font-family: Arial;
     color: #de2b24;
     font-weight: bold;
+    transition: 0.5s;
+    transform: scale(1.2);
 }
 
 .blackPartRow2Media2:hover{
@@ -445,7 +475,9 @@ margin: auto;
     border-color: #e02921;
     border-radius: 2px;
     margin: 0 10px; 
-    padding-top:10px
+    padding-top:10px;
+    transition: 0.5s;
+    transform: scale(1.2);
 }
 
 .blackPartRow2Media2{

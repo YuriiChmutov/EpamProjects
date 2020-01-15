@@ -85,7 +85,14 @@ h6{
     width: 200px;
     text-align: center;
     background-color: #f35e59;
+   
     
+
+}
+
+.redPartTable td:hover{
+    transition: 1s;
+    transform: scale(1.2);
 }
 
 .redPartTable td p{
@@ -158,9 +165,18 @@ margin: auto;
   
 }
 
+
+
 .round img{
 padding-top: 18px;
 }
+
+
+.bluePart .round:hover{
+    transform: scale(1.2);
+}
+
+
 .triangle{
     padding-top: 50px;
     background: green;
@@ -190,6 +206,10 @@ padding-top: 18px;
     
 }
 
+.bluePart .triangle #cancelRound img:hover{
+    transition: 0.5s;
+    transform: scale(1.2);
+}
 
 
 .formPart{
@@ -251,6 +271,8 @@ padding-top: 18px;
     color: #b0b0b0;
     font-weight: bold;
     box-shadow: 0 0 10px rgba(0,0, 0, 0.2) ;
+    transition: 0.5s;
+    transform: scale(1.2);
 }
 
 .formPart .yourNameField input:focus{
@@ -269,6 +291,8 @@ padding-top: 18px;
     color: #b0b0b0;
     font-weight: bold;
     box-shadow: 0 0 10px rgba(0,0, 0, 0.2) ;
+    transition: 0.5s;
+    transform: scale(1.2);
 }
 
 .formPart #submitNowButtom input{
@@ -307,6 +331,8 @@ padding-top: 18px;
     
     align-content: center;
     box-shadow: 0 0 10px rgba(0,0, 0, 0.4) ;
+    transition: 0.5s;
+    transform: scale(1.2);
 }
 
 
@@ -350,7 +376,9 @@ footer table td #nonSelectedMedia:hover{
     border: 2px solid;
     border-color: #e02921;
     border-radius: 2px;
-    padding-top:10px
+    padding-top:10px;
+    transition: 0.5s;
+    transform: scale(1.2);
 }
 
 footer table td #nonSelectedMedia:visited{
@@ -412,6 +440,8 @@ footer #emailField input:hover{
     box-shadow: 0 0 10px #de2b24 ;
     border-color: black;
     background-color: #515151;
+    transition: 0.5s;
+    transform: scale(1.1);
 }
 
 footer #emailField input:focus{
@@ -425,6 +455,8 @@ footer #emailField input:focus{
     box-shadow: 0 0 10px #de2b24 ;
     border-color: black;
     background-color: #515151;
+    transition: 0.5s;
+    transform: scale(1.1);
 }
 
 footer #subscribeSubmit{
@@ -458,6 +490,8 @@ footer #subscribeSubmit input:hover{
     font-family: Arial;
     color: #de2b24;
     font-weight: bold;
+    transition: 0.5s;
+    transform: scale(1.2);
 }
 
 
