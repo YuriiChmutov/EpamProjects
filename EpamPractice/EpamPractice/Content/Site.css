@@ -1,0 +1,90 @@
+﻿
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+.blocksLink{
+    display: block;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+header {
+    background-color: bisque;
+}
+
+    header .navbar-brand{
+       
+    }
+
+    header h1 {
+       margin-top:20px;
+       margin-right:180px;
+    }
+footer{
+    height:80px;
+    color:snow;
+}
+
+footer .row p{
+    margin:auto;
+    
+}
+
+footer .row a {
+        margin-top: 11px;
+}
+
+    footer img:hover {
+        transition: 1s;
+        transform: scale(1.2);
+    }
+
+
+
+.myClass {
+    width: 80%;
+    margin: auto;
+    background-color: burlywood
+}
+
+    .myClass .col-9 {
+        background-color: aqua;
+    }
+
+        .myClass .col-9 .card mb-3 img {
+            height: 300px;
+            width: 100%;
+            display: block;
+        }
+
+        .myClass .form-group{
+            margin-left: 50px;
+        }
+
+.myClassInputB {
+    margin-left: 50px;
+}
+
+.forP p {
+    margin-left: 50px;
+    font-size: 23px;
+}

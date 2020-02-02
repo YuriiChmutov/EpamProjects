@@ -1,0 +1,18 @@
+﻿@model string
+@using EpamPractice.Infrastructure
+@{
+    ViewBag.Title = "ProfileShowResults";
+}
+
+<div class="text-center mt-2 mb-3"><h2>Результаты</h2></div>
+@ViewBag.Show
+<p>
+    <div class="container-fluid ml-3">
+
+        @*@Html.ActionLink("ОК", "ProfileShow", new { @class = "btn btn-info" })*@
+        
+        <button type="button" class="btn btn-info" onclick="location.href='@Url.Action("ProfileShow", "Home", new { @class = "btn btn-info" })'">OK</button>
+        
+    </div>
+</p>
+
