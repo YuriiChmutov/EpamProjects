@@ -1,50 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
-using System.Collections;
-using EpamPractice.Models;
-using System.Text;
-
+using CodeFirst.Models;
+using EpamPractice.DAL;
 namespace EpamPractice.Controllers
 {
     public class HomeController : Controller
     {
+        private BlogContext db = new BlogContext();
         public ActionResult Index()
         {
             return View();
         }
 
-
-        public Users users = new Users
-        {
-            UsersList = new List<User>
-                {
-                    new User{Name = "Колян",TitleOfComment = "Это шедевр!", Comment = "Как здорово, что вообще такие блоги есть! Благодаря им мы смогли спланировать свое первое самостоятельное путешествие. Советы блогеров бесценны, потому как при планировании поездки есть много вопросов, а вот ответы часто не удовлетворяют, а блог-это способ выразить свое мнение и отразить существующую действительность.", Date = DateTime.Now},
-                    new User{Name = "Мария",TitleOfComment = "Очень познавательно", Comment = "Буду рада, если мой блог о путешествиях тоже понравится 8) — chemezova.ru/travel/ Пишу про Байкал, Европу и Азию", Date = DateTime.Now},
-                    new User{Name = "Саша",TitleOfComment = "Какие планы?", Comment = "Юрий, а если бы вы начинали свое путешествие и свой блог сегодня, сейчас, в какую страну вы бы отправились и почему?", Date = DateTime.Now},
-                    new User{Name = "Ксения",TitleOfComment = "Если что", Comment = "А мне нравится авторский блог путешественника Алексея Гуреева landsurveyorsblog.org очень интересно написаны обзоры, статьи, много интересных, качественных фотографий, в общем рекомендую.", Date = DateTime.Now}
-
-                }
-        };
-
-        [HttpGet]
-        public ActionResult Comments()
-        {
-            
-            //ViewBag.UserCollection = users;
-            return View(users);
-        }
-
-        [HttpPost]
-        public ViewResult Comments(string name, string title, string comment)
-        {
-            users.UsersList.Add(new User { Name = name, TitleOfComment = title, Comment = comment, Date = DateTime.Now});
-            //ViewBag.UserCollection = users;
-            return View(users);
-        }
-        
         [HttpGet]
         public ActionResult ProfileShow()
         {

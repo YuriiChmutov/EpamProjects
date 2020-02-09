@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title</title>
 
     @Scripts.Render("~/bundles/modernizr")
     @Styles.Render("~/Content/Site.css")
@@ -17,12 +17,12 @@
             <div class="row">
                 <a name="top"> </a>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-2 col-xl-2">
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href="../Home">
                         <img src="../../Content/images/koala-logo.png" alt="">
                     </a>
                 </div>
                 <div class="col-lg-10 col-md-10 col-sm-10 col-10 col-xl-10 text-center">
-                    <h1>My travel blog</h1>
+                    <h1>Блог о путешествиях</h1>
                 </div>
             </div>
         </div>
@@ -32,29 +32,33 @@
         <div class="container-fluid">
             <div class="row">
 
-                <div class="col-9">
+                <div class="col-9" style="min-height: 500px">
                     @RenderBody()
                 </div>
                 <div class="col-3 ">
+
 
                     <nav class="navbar bg-warning navbar-light">
 
                         <!-- Links -->
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link" href="../Home">Главная</a>
+                                <a class="nav-link" href="../../Home/Index">Главная</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="../Home/Comments">Гостевая</a>
+                            <li class="nav-item" >
+                                <a class="nav-link" href="../Users/Index">Гостевая</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="../Home/ProfileShow">Анкета</a>
                             </li>
-                            
+
                         </ul>
                     </nav>
+
+                    
+
                 </div>
-            </div>
+                </div>
         </div>
     </div>
 
