@@ -1,43 +1,129 @@
-﻿@{
+﻿@using EpamPractice.Logic
+@using System.Linq
+@using CodeFirst.Models
+@model CodeFirst.Models.HomeIndexModelView
+@{
     ViewBag.Title = "Home Page";
 
 }
 <div class="text-center mt-2 mb-3"><h2>Главная</h2></div>
 
 
-@helper printNews(string nameOfNews, string special, string subtitle, string link, string date, string content)
+@helper printNews(string nameOfNews, string special, string subtitle, string link, DateTime date, string content, int ID)
 {
+
+    string str = Logic.print200Symbols(content, 200); //Folder Logic/ class Logic/ static method
+
     <div class="card mb-3">
         <h3 class="card-header">@nameOfNews</h3>
-        <div class="card-body">
-            <h5 class="card-title">@special</h5>
-            <h6 class="card-subtitle text-muted">@subtitle</h6>
-        </div>
-        <img src="@link" alt="Card image">
+
         <div class="card-body">
             <p class="card-text">
-                @content
+                @str
+                @Html.ActionLink("Подробнее", "Details", new { id = ID })
             </p>
         </div>
         <div class="card-footer text-muted">
-            @date days ago
+            @date.Date.Day/@date.Date.Month/@date.Date.Year
         </div>
     </div>
 }
 
 
-@printNews("Озеро Хинтерзее", "Озеро в Германии", "Лучшее что я видел",
-    "../../Content/images/lake-picture.jpg", "2", "Хинтерзее – красивейшее озеро в районе" +
-    " городка Рамзау 18 метров глубиной. Сочетание большого количества свежих горных источников воды," +
-    " питающих озеро, не позволяют воде значительно прогреться даже в летние месяцы, максимальная" +
-    " температура воды 16°. Таким образом, для купания оно лишь условно подходит." +
-    " Прекрасная природа и красивейшие виды.")
+@helper printStatistic(int amount, string name)
+{
+    double res = 0;
+    string a = Logic.calculateProcent(ref res, amount, Model.Votes);
 
-@printNews("Коалы в Австралии", "Special title treatment", "Support card subtitle",
-    "../../Content/images/koala-picture-main.jpg", "7", "Коалы очень милые существа.")
+    <h5 class="mt-3">@name (@res%)</h5>
+    <div class="progress">
 
-@printNews("Пейзаж на берегах Новой Зеландии", "Special title treatment", "Support card subtitle",
-    "../../Content/images/landscape-picture.jpg", "20", "Необычайно красивое место")
+        <div class="progress-bar-striped bg-info" role="progressbar" style="width: @a" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+}
+
+@foreach (var item in Model.Articles)
+{
+    @printNews(item.NameOfNews, item.Special, item.Subtitle, item.Link, item.Date, item.Content, item.Id)
+}
+
+
+
+@section menu{
+    @using (Html.BeginForm())
+    {
+
+
+        <nav class="navbar  navbar-dark mt-3">
+
+            <h2 class="text-center">Голосование</h2>
+
+
+
+
+            <legend class="text-light">Оцените блог</legend>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input " name="optionsRadios" id="optionsRadios1" value="1">
+                    <h5 class="text-light">1 (плохо)</h5>
+                </label>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="2">
+                    <h5 class="text-light"> 2 (средне)</h5>
+                </label>
+            </div>
+            <div class="form-check disabled">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="3" checked="">
+                    <h5 class="text-light">3 (хорошо)</h5>
+                </label>
+            </div>
+
+
+
+            <div class="myClassInputB">
+                <input type="submit" class="btn btn-primary mb-3" name="Send" value="Отправить" />
+            </div>
+
+
+        </nav>
+
+    }
+
+    @foreach (var item in Model.Votes)
+    {
+        @printStatistic(item.Amount, item.Value)
+    }
+
+
+    <h5 class="mt-3">Средняя оценка: @Logic.calculateAvg(ViewBag.One, ViewBag.Two, ViewBag.Three, ViewBag.Count)</h5>
+    
+    <div class="progress mt-3 bg-danger">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: @Logic.width(ViewBag.One, ViewBag.Two, ViewBag.Three, ViewBag.Count)%"></div>
+    </div>
+
+    <h5 class="mt-3">Всего: @ViewBag.Count</h5>
+    <h5 class="mt-3">1: @ViewBag.One</h5>
+    <h5 class="mt-3">2: @ViewBag.Two</h5>
+    <h5 class="mt-3">3: @ViewBag.Three</h5>
+}
+
+
+
+@*@printNews("Озеро Хинтерзее", "Озеро в Германии", "Лучшее что я видел",
+        "../../Content/images/lake-picture.jpg", "2", "Хинтерзее – красивейшее озеро в районе" +
+        " городка Рамзау 18 метров глубиной. Сочетание большого количества свежих горных источников воды," +
+        " питающих озеро, не позволяют воде значительно прогреться даже в летние месяцы, максимальная" +
+        " температура воды 16°. Таким образом, для купания оно лишь условно подходит." +
+        " Прекрасная природа и красивейшие виды.")
+
+    @printNews("Коалы в Австралии", "Special title treatment", "Support card subtitle",
+        "../../Content/images/koala-picture-main.jpg", "7", "Коалы очень милые существа.")
+
+    @printNews("Пейзаж на берегах Новой Зеландии", "Special title treatment", "Support card subtitle",
+        "../../Content/images/landscape-picture.jpg", "20", "Необычайно красивое место")*@
 
 
 <div>

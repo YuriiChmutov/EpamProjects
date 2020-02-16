@@ -13,14 +13,26 @@ namespace EpamPractice.DAL
     {
         public BlogContext(): base("BlogContext")
         {
-
+            this.Configuration.LazyLoadingEnabled = false;
         }
 
         public DbSet<User> Users { get; set; }
+        public DbSet<Article> Articles { get; set; }
+        public DbSet<Vote> Votes { get; set; }
+        public DbSet<Tag> Tags { get; set; }
+
+        //public DbSet<TagArticleModel> TagArticle { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+
+            //modelBuilder.Entity<Tag>()
+            //            .HasMany<Article>(t => t.Articles)
+            //            .WithMany(a => a.Tags)
+            //            .Map
+
+
         }
     }
 }

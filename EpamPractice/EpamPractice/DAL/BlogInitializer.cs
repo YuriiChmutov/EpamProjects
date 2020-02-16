@@ -22,8 +22,53 @@ namespace EpamPractice.DAL
             };
             users.ForEach(u => context.Users.Add(u));
             context.SaveChanges();
+
+            var articles = new List<Article>
+            {
+                new Article {NameOfNews = "Озеро Хинтерзее", Special = "Озеро в Германии", Subtitle = "Лучшее что я видел",
+                Link = "../../Content/images/lake-picture.jpg", Date = DateTime.Now,
+                Content = "Хинтерзее – красивейшее озеро в районе" +
+                    " городка Рамзау 18 метров глубиной. Сочетание большого количества свежих горных источников воды," +
+                    " питающих озеро, не позволяют воде значительно прогреться даже в летние месяцы, максимальная" +
+                    " температура воды 16°. Таким образом, для купания оно лишь условно подходит." +
+                    " Прекрасная природа и красивейшие виды."},
+                new Article{NameOfNews = "Коалы в Австралии", Special = "Special title treatment", Subtitle = "Support card subtitle",
+                Link = "../../Content/images/koala-picture-main.jpg", Date = (DateTime.Now), Content = "Коалы очень милые существа."},
+                new Article{ NameOfNews = "Пейзаж на берегах Новой Зеландии", Special = "Special title treatment", Subtitle = "Support card subtitle",
+                Link = "../../Content/images/landscape-picture.jpg", Date = DateTime.Parse("12/12/2000"),Content = "Необычайно красивое место"},
+                
+            };
+
+            articles.ForEach(a => context.Articles.Add(a));
+            context.SaveChanges();
+
+            var votes = new List<Vote>
+            {
+                new Vote {Value = "1", Amount = 1},
+                new Vote {Value = "2", Amount = 2},
+                new Vote {Value = "3", Amount = 7}
+            };
+
+            votes.ForEach(v => context.Votes.Add(v));
+            context.SaveChanges();
+
+            var tags = new List<Tag>
+            {
+                new Tag{Text = "#отдых"},
+                new Tag{Text = "#зверюшка"},
+                new Tag{Text = "#красиво"},
+                new Tag{Text = "#блог"},
+                new Tag{Text = "#яТутБыл"},
+                new Tag{Text = "#море"},
+                new Tag{Text = "#закат"},
+                new Tag{Text = "#каникулы"}
+            };
+
+            tags.ForEach(t => context.Tags.Add(t));
+            context.SaveChanges();
         }
 
+        
         
                 
     }

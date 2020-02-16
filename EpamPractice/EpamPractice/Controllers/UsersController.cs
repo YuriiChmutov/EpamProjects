@@ -47,8 +47,13 @@ namespace EpamPractice.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "UserId,Name,TitleOfComment,Comment,Date")] User user)
+        public ActionResult Create([Bind(Include = "UserId,Name,TitleOfComment,Comment")] User user)
         {
+            user.Date = DateTime.Now;
+            if(DateTime.Now.DayOfYear - user.Date.DayOfYear <= -1)
+            {
+                ModelState.AddModelError("Date", "Incorrect date");
+            }
             if (ModelState.IsValid)
             {
                 db.Users.Add(user);
@@ -81,6 +86,10 @@ namespace EpamPractice.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "UserId,Name,TitleOfComment,Comment,Date")] User user)
         {
+            if (DateTime.Now.DayOfYear - user.Date.DayOfYear <= -1)
+            {
+                ModelState.AddModelError("Date", "Incorrect date");
+            }
             if (ModelState.IsValid)
             {
                 db.Entry(user).State = EntityState.Modified;

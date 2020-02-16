@@ -28,7 +28,9 @@
 
                 <div class="card-footer text-muted">
 
-                    @if (@item.Date.DayOfYear == DateTime.Now.DayOfYear || (DateTime.Now.DayOfYear - @item.Date.DayOfYear) <= -1)
+
+
+                    @if (@item.Date.DayOfYear == DateTime.Now.DayOfYear)
                     {
                         <h6>Сегодня</h6>
                     }
