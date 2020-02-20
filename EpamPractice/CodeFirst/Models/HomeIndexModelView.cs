@@ -10,6 +10,7 @@ namespace CodeFirst.Models
     {
         public IEnumerable<Article> Articles { get; set; }
         public IEnumerable<Vote> Votes { get; set; }
+        public IndexViewModel IndexView { get; set; }
 
         //public IEnumerable<Article> Articles { get; set; }
         //public IEnumerable<Tag> Tags { get; set; }

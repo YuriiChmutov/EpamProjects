@@ -7,13 +7,13 @@ using CodeFirst.Models;
 
 namespace CodeFirst.Interfaces
 {
-    public interface IRepository: IDisposable
+    public interface IRepository<T>: IDisposable
     {
-        IEnumerable<Article> GetArticleList();
-        Article GetArticle(int? id);
-        void Create(Article item);
-        void Update(Article item);
+        IEnumerable<T> GetAll();
+        T Get(int? id);
+        void Create(T item);
+        void Update(T item);
         void Delete(int id);
-        void Save();
+        // SaveAll();
     }
 }

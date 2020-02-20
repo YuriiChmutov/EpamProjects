@@ -19,8 +19,9 @@ namespace EpamPractice.Controllers
 {
     public class HomeController : Controller
     {
+        UnitOfWork unitOfWork;
        // private BlogContext db1 = new BlogContext();
-        IRepository db;
+        IRepository<Article> db;
         //IRepository repo;
 
         //public HomeController(IRepository r)
@@ -29,11 +30,12 @@ namespace EpamPractice.Controllers
         //}
         public HomeController()
         {
+            unitOfWork = new UnitOfWork();
             db = new ArticleRepository();
         }
 
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Index(int page = 1)
         {
             //ViewBag.Votes = db1.Votes.ToList();
             //return View(db.GetArticleList());
@@ -43,14 +45,25 @@ namespace EpamPractice.Controllers
                 var model = new HomeIndexModelView
                 {
                     Articles = d.Articles.ToList(),
-                    Votes = d.Votes.ToList()
+                    Votes = d.Votes.ToList(),
+                   
+
                 };
 
                 ViewBag.Count = (from i in d.Votes select i.Amount).Sum();
                 ViewBag.One = (from i in d.Votes where i.Id == 1 select i.Amount).Sum();
                 ViewBag.Two = (from i in d.Votes where i.Id == 2 select i.Amount).Sum();
                 ViewBag.Three = (from i in d.Votes where i.Id == 3 select i.Amount).Sum();
-               
+
+
+                int pageSize = 2; // количество объектов на страницу
+                IEnumerable<Article> articlesPerPages = model.Articles.Skip((page - 1) * pageSize).Take(pageSize);
+                PageInfo pageInfo = new PageInfo { PageNumber = page, PageSize = pageSize, TotalItems = model.Articles.Count()};
+                IndexViewModel ivm = new IndexViewModel { PageInfo = pageInfo, Articles = articlesPerPages };
+                // ViewBag.ivm = ivm;
+
+                model.IndexView = ivm;
+
                 return View(model);
             }
         }
@@ -88,39 +101,99 @@ namespace EpamPractice.Controllers
                 ViewBag.Two = (from i in d.Votes where i.Id == 2 select i.Amount).Sum();
                 ViewBag.Three = (from i in d.Votes where i.Id == 3 select i.Amount).Sum();
                 return View(model);
-            }
+            } 
+        }
 
+        [HttpGet]
+        public ActionResult Create()
+        {
+            SelectList tags = new SelectList(unitOfWork.Tags.GetAll(), "Id", "Text");
+            ViewBag.Tags = tags;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create([Bind(Include = "Id, NameOfNews, Special,Subtitle,Content")]Article article)
+        {
+            article.Date = DateTime.Now;
+            using(BlogContext context = new BlogContext())
+            {
+                if (ModelState.IsValid)
+                {
+                    context.Articles.Add(article);
+                    context.SaveChanges();
+                    return RedirectToAction("Index", "Home");
+                }
+            }
             
+
+            return View(article);
         }
 
         public ActionResult Details(int? id)
         {
             using (var context = new BlogContext())
             {
+                var article = context.Articles.Find(id);
+                if(article == null)
+                {
+                    return HttpNotFound();
+                }
                 //var post = context.Articles.Find(id);
                 //context.Entry(post).Reference(p => p.Tags).Load();
                 //context.Entry(post).Reference(p => p.Tags).Load();
                 //context.Articles.Find(id).Tags.ToList()
 
-                var blog1 = context.Articles
+                article = context.Articles
                        .Where(b => b.Id == id)
                        .Include(b => b.Tags)
                        .FirstOrDefault();
 
-                ViewBag.article = db.GetArticle(id);
+                ViewBag.article = unitOfWork.Articles.Get(id);
 
-                return View(blog1);
+                return View(article);
             }
         }
+
+
+        public ActionResult Delete(int? id)
+        {
+            
+            Article article = unitOfWork.Articles.Get(id);
+            
+            if (article == null)
+            {
+                return HttpNotFound();
+            }
+            return View(article);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            using(BlogContext context = new BlogContext())
+            {
+               Article article = context.Articles.Find(id);
+                //article = context.Articles
+                //       .Where(b => b.Id == id)
+                //       .Include(b => b.Tags)
+                //       .FirstOrDefault();
+                context.Articles.Remove(article);
+                context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            //Article article = unitOfWork.Articles.Get(id);
+            
+            
+        }
+
 
         [HttpGet]
         public ActionResult ProfileShow()
         {
-           
 
                 ViewBag.Colors = new string[] { "askQuestion@mail.com", "+(380)-93-376-15-01", "@yuriiChmutov" };
-                return View();
-            
+                return View();  
         }
 
         [HttpPost]

@@ -8,48 +8,48 @@ using EpamPractice.DAL;
 
 namespace EpamPractice.Repository
 {
-    public class ArticleRepository: IRepository<Article>
+    public class TagRepository : IRepository<Tag>
     {
         private BlogContext db;
 
-        public ArticleRepository()
+        public TagRepository()
         {
             this.db = new BlogContext();
         }
 
-        public IEnumerable<Article> GetAll()
+        public IEnumerable<Tag> GetAll()
         {
-            return db.Articles;
+            return db.Tags;
         }
 
-        public Article Get(int? id)
-        { 
-            return db.Articles.Find(id);
-        }
-
-        public void Create(Article item)
+        public Tag Get(int? id)
         {
-            db.Articles.Add(item);
+            return db.Tags.Find(id);
         }
 
-        public void Update(Article item)
+        public void Create(Tag item)
+        {
+            db.Tags.Add(item);
+        }
+
+        public void Update(Tag item)
         {
             db.Entry(item).State = System.Data.Entity.EntityState.Modified;
         }
 
         public void Delete(int id)
         {
-            Article article = db.Articles.Find(id);
-            if(article != null)
+            Tag tag = db.Tags.Find(id);
+            if (tag != null)
             {
-                db.Articles.Remove(article);
+                db.Tags.Remove(tag);
             }
         }
 
-        //public void SaveAll()
-        //{
-        //    db.SaveChanges();
-        //}
+        public void SaveAll()
+        {
+            db.SaveChanges();
+        }
 
         private bool disposed = false;
 

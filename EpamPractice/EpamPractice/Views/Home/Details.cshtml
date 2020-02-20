@@ -7,7 +7,7 @@
 <h2 class="text-center mt-2">Подробнее</h2>
 
 <div class="card mb-3">
-    <h3 class="card-header">@ViewBag.article.NameOfNews)</h3>
+    <h3 class="card-header">@ViewBag.article.NameOfNews</h3>
     <div class="card-body">
         <h5 class="card-title">@ViewBag.article.Special</h5>
         <h6 class="card-subtitle text-muted">@ViewBag.article.Subtitle</h6>
@@ -17,8 +17,8 @@
         <p class="card-text">
             @ViewBag.article.Content
             @foreach (var item in Model.Tags)
-            {
-                <div class="text-danger">@item.Text</div>
+            {          
+                @Html.ActionLink(@item.Text, "#")
             }
 
 

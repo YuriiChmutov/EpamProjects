@@ -13,7 +13,7 @@ namespace EpamPractice.DAL
     {
         public BlogContext(): base("BlogContext")
         {
-            this.Configuration.LazyLoadingEnabled = false;
+            this.Configuration.LazyLoadingEnabled = true;
         }
 
         public DbSet<User> Users { get; set; }
