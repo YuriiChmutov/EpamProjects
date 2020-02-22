@@ -19,15 +19,17 @@ namespace EpamPractice.Controllers
 {
     public class HomeController : Controller
     {
-        UnitOfWork unitOfWork;
-       // private BlogContext db1 = new BlogContext();
-        IRepository<Article> db;
-        //IRepository repo;
 
-        //public HomeController(IRepository r)
-        //{
-        //this.repo = r;
-        //}
+        //private BlogContext db1 = new BlogContext();
+        UnitOfWork unitOfWork;
+        IRepository<Article> db;
+        IRepository<Article> repo; //Ninject
+
+        public HomeController(IRepository<Article> r)
+        {
+            this.repo = r;
+        }
+
         public HomeController()
         {
             unitOfWork = new UnitOfWork();
@@ -62,7 +64,7 @@ namespace EpamPractice.Controllers
                 IndexViewModel ivm = new IndexViewModel { PageInfo = pageInfo, Articles = articlesPerPages };
                 // ViewBag.ivm = ivm;
 
-                model.IndexView = ivm;
+                //model.IndexView = ivm;
 
                 return View(model);
             }

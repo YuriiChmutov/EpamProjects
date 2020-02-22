@@ -2,19 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-//using IoSApp.Models;
-//using Ninject.Modules;
+
+using Ninject.Modules;
 using CodeFirst.Interfaces;
 using EpamPractice.Repository;
 using EpamPractice.DAL;
+using CodeFirst.Models;
 
 namespace EpamPractice.Util
 {
-    //public class NinjectRegistrations: NinjectModule
-    //{
-    //    public override void Load()
-    //    {
-    //        Bind<IRepository>().To<ArticleRepository>();
-    //    }
-    //}
+    public class NinjectRegistrations : NinjectModule
+    {
+        public override void Load()
+        {
+            Bind<IRepository<Article>>().To<ArticleRepository>();
+        }
+    }
 }
