@@ -1,0 +1,29 @@
+﻿@using EShop.BLL
+@model EShop.DAL.Entities.Product
+
+@{ 
+    string str = LogicClass.print200Symbols(Model.Description, 100);
+}
+
+<div class="col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-3 mt-3">
+    <div class="card" style="min-height: 490px">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body d-flex flex-column">
+            <h5 class="card-title mt-auto">@Model.Name</h5>
+            <p class="card-text mt-auto">@str</p>
+            <div class="pull-right label label-primary  mt-auto text-right">@Model.Price.ToString("c")</div>
+
+            <a href="#" class="btn btn-primary mt-2">Купить</a>
+            @*<input type="submit" class="btn btn-success mt-1" value="Add to cart" />*@
+            @using (Html.BeginForm("AddToCart", "Cart"))
+        {
+            
+                @Html.HiddenFor(x => x.ProductId)
+                @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                <input type="submit" class="form-control btn-success mt-1 col-12"  value="Add to cart" />
+           
+        }
+        </div>
+    </div>
+</div>
+

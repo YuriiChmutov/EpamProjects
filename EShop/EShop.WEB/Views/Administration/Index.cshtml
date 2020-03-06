@@ -1,0 +1,109 @@
+﻿@model IEnumerable<EShop.DAL.Entities.Product>
+@using EShop.WEB.HtmlHelpers
+
+@{
+    /**/
+
+    ViewBag.Title = "Админ - Спсиок всего";
+    //Layout = null;
+}
+
+@section saved{
+    @if (TempData["message"] != null)
+    {
+        <div class="alert alert-success text-center">@TempData["message"]</div>
+    }
+}
+
+@section create{
+
+    @if (TempData["messageCreate"] != null)
+    {
+
+        <div class="alert alert-success text-center">@TempData["messageCreate"]</div>
+
+
+    }
+}
+
+@section delete{
+    @if(TempData["messageDelete"] != null)
+    {
+        <div class="alert alert-warning text-center">@TempData["messageDelete"]</div>
+    }
+}
+
+
+<div class="container-fluid">
+
+    <div class="row">
+        <h3 class="mb-3 col-12 col-xl-12 col-lg-12 col-md-12">Все товары</h3>
+
+        <div class="col-lg-4 col-xl-2 col-md-4 col-sm-8 col-10 mb-3">
+            @Html.ActionLink("Добавить новый", "Create", null,
+            new { @class = "btn btn-outline-secondary mt-auto col-12" })
+        </div>
+
+        <div class="col-lg-10 col-xl-10 col-md-10 col-sm-12 col-12 mb-3">
+
+            @using (Html.BeginForm())
+            {
+                <div class="row">
+                    <input id="SearchString" class="ml-3 form-control col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12" name="SearchString" placeholder="Категория или название" type="text" />
+                    @*@Html.TextBox("SearchString", "", new { @class = "form-control"})*@
+                    <input class="ml-3 mt-sm-3 mt-3 mt-md-0 mt-lf-0 mt-xl-0 col-xl-2 col-lg-2 col-md-2 col-sm-4 col-7 form-control btn-dark" type="submit" value="Искать" />
+                </div>
+            }
+
+        </div>
+
+    </div>
+</div>
+<div class="panel panel-default">
+
+    <div class="panel-heading mb-3 ml-3 ">
+
+    </div>
+    <div class="panel-body">
+        <table class="table table-striped table-condensed table-bordered">
+            <tr>
+                <th class="text-center ">
+
+                    @{
+                        string strId = ViewBag.PictureId;
+                        string strPrice = ViewBag.PicturePrice;
+                        string strName = ViewBag.PictureName;
+                    }
+                    @Html.ActionLink("Номер", "Index", new { sortOrder = ViewBag.IdSortParm }, new { @class = "text-primary", style = "text-decoration:none;" })
+                    @Html.DisplayMessage(strId)
+
+
+                </th>
+                <th>
+                    @Html.ActionLink("Название", "Index", new { sortOrder = ViewBag.NameSortParm }, new { @class = "text-primary", style = "text-decoration:none;" })
+                    @Html.DisplayMessage(strName)
+                </th>
+                <th class="text-right ">
+                    @Html.ActionLink("Цена", "Index", new { sortOrder = ViewBag.PriceSortParm }, new { @class = "text-primary", style = "text-decoration:none;" })
+                    @Html.DisplayMessage(strPrice)
+                </th>
+                <th class="text-center ">Удаление</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="text-center">@item.ProductId</td>
+                    <td class="btn-outline-secondary">@Html.ActionLink(item.Name, "Edit", new { id = item.ProductId }, new { @class = "text-primary", style = "text-decoration: none" })</td>
+
+                    <td class="text-right">@item.Price.ToString("c")</td>
+                    <td class="text-center">
+
+                        @Html.ActionLink("Удалить", "Delete", new { id = item.ProductId }, new { @class = "btn btn-defaul btn-outline-danger" })
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+
+</div>
+

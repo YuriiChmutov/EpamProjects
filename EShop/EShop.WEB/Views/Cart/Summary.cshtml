@@ -1,0 +1,16 @@
+﻿@model EShop.DAL.Entities.Cart
+
+
+@*Частичное представление для того, чтобы отображать в навбаре
+    кол-во предметов в корзине и сумму покупки*@
+
+<div class="navbar-right">
+    @Html.ActionLink("Посмотреть", "Index", "Cart",
+    new { returnUrl = Request.Url.PathAndQuery },
+    new { @class = "btn btn-default navbar-btn" })
+</div>
+<div class="navbar-text navbar-right">
+    <b><img src="~/Content/Images/Icons/корзина-40.png" alt="Корзина" class="mr-1" /></b>
+    @Model.Lines.Sum(x => x.Quantity) премет(ов),
+    @Model.ComputeTotalValue().ToString("c")
+</div>
