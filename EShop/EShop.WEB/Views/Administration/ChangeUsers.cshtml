@@ -1,0 +1,19 @@
+﻿@model EShop.DAL.Entities.User
+
+@{
+    ViewBag.Title = "Забанить/Разбанить";
+}
+    <div class="jumbotron">
+        <h2>Хотите это сделать?</h2>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+
+            <input type="submit" value="Выполнить" class="btn btn-outline-danger mr-2" />
+
+            @Html.ActionLink("Отмена", "CheckUsers", null, new { @class = "btn btn-light" })
+
+        }
+    </div>

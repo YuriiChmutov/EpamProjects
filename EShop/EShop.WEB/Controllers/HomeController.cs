@@ -8,6 +8,7 @@ using EShop.DAL.EF;
 using EShop.DAL.Entities;
 using EShop.DAL.Interfaces;
 using EShop.DAL.Repositories;
+using EShop.WEB.Filters;
 
 namespace EShop.WEB.Controllers
 {
@@ -20,42 +21,42 @@ namespace EShop.WEB.Controllers
         {
             unitOfWork = new EFUnitOfWork();
         }
-        public ActionResult Index()
+        public ActionResult Index(string searchProduct)
         {
+            if (!String.IsNullOrEmpty(searchProduct))
+            {
+                RedirectToAction("Index","Product");
+            }
+                string result = "Вы вошли на сайт как гость";
+             
+                if (User.Identity.IsAuthenticated)
+                {
+                
+                result = "Вы вошли на сайт как " + User.Identity.Name;
+                }
+
+            ViewBag.Result = result;
+
             var model = new HomePageViewModel()
             {
                 Leaders = unitOfWork.Products.GetAll()
                         .OrderByDescending(p => p.Price)
                         .Take(4),
 
-                Telephones = from p in unitOfWork.Products.GetAll()
-                             where p.CategoryId == 1 || p.CategoryId == 2
-                             select p
-
+                Telephones = unitOfWork.Products.GetAll()
+                        .Where(p => p.CategoryId == 1)
+                        .Take(8)
+                    
             };
-                      
+            
+            
             return View(model);
         }
 
-        //int pageSize = 3; // количество объектов на страницу
-        //var phones = unit.Products.GetAll().ToList();
-        //IEnumerable<Product> productsPerPages = phones.Skip((page - 1) * pageSize).Take(pageSize);
-        //PageInfo pageInfo = new PageInfo { PageNumber = page, PageSize = pageSize, TotalItems = phones.Count };
-        //IndexViewModel ivm = new IndexViewModel { PageInfo = pageInfo, Products = productsPerPages };
-        //    return View(ivm);
+        
+        
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
+        
+        
     }
 }

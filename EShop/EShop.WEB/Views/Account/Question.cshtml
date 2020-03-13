@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "Недостаточно прав";
+}
+    <div class="jumbotron ">
+        <h2 >У вас нет прав администратора</h2>
+        
+        @{ var action = ViewBag.Action; var controller = ViewBag.Controller; }
+        @*@Html.ActionLink("Вернутся", action, controller) |*@
+        <a class="btn btn-outline-dark " href="/@controller/@action"><span class="text-primary">Вернуться</span></a> 
+        @Html.ActionLink("Войти с правами администратора", "Login", "Account",
+        new { returnUrl = ViewBag.returnUrl }, new { @class = "btn btn-outline-info"})
+    </div>

@@ -16,8 +16,30 @@ namespace EShop.DAL.Repositories
         private EShopContext _context = new EShopContext();
         private ProductRepository productRepository;
         private CategoryRepository categoryRepository;
+        private OrderRepository orderRepository;
+        private UserRepository userRepository;
+        
 
        
+        public OrderRepository Orders
+        {
+            get
+            {
+                if (orderRepository == null)
+                    orderRepository = new OrderRepository(_context);
+                return orderRepository;
+            }
+        }
+
+        public UserRepository Users
+        {
+            get
+            {
+                if (userRepository == null)
+                    userRepository = new UserRepository(_context);
+                return userRepository;
+            }
+        }
 
         public ProductRepository Products
         {
@@ -38,6 +60,8 @@ namespace EShop.DAL.Repositories
                 return categoryRepository;
             }
         }
+
+     
 
         public void Save()
         {

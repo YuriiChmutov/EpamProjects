@@ -2,8 +2,6 @@
 @using EShop.WEB.HtmlHelpers
 
 @{
-    /**/
-
     ViewBag.Title = "Админ - Спсиок всего";
     //Layout = null;
 }
@@ -16,13 +14,9 @@
 }
 
 @section create{
-
     @if (TempData["messageCreate"] != null)
     {
-
         <div class="alert alert-success text-center">@TempData["messageCreate"]</div>
-
-
     }
 }
 
@@ -33,11 +27,22 @@
     }
 }
 
+@*<div class="container-fluid">
+    
+        @Html.ActionLink("Пользователи", "CheckUsers", "Administration")
+        @Html.ActionLink("Журнал ошибок", "ExceptionsInfo", "Administration")
+    
+</div>*@
 
 <div class="container-fluid">
 
     <div class="row">
-        <h3 class="mb-3 col-12 col-xl-12 col-lg-12 col-md-12">Все товары</h3>
+        <h3 class="mb-3 col-12 col-xl-12 col-lg-12 col-md-12 row">
+            <span class = "col-xl-3 col-lg-6 col-md-12 col-sm-12 col-12">Все товары</span>
+            @Html.ActionLink("Пользователи", "CheckUsers", "Administration", new { @class = "col-xl-3 col-lg-6 col-md-12 col-sm-12 col-12" })
+            @Html.ActionLink("Список заказов", "ListOfOrders", "Administration", new { @class = "col-xl-3 col-lg-6 col-md-12 col-sm-12 col-12" })
+            @Html.ActionLink("Журнал ошибок", "ExceptionsInfo", "Administration", new { @class = "col-xl-3 col-lg-6 col-md-12 col-sm-12 col-12" })
+        </h3>
 
         <div class="col-lg-4 col-xl-2 col-md-4 col-sm-8 col-10 mb-3">
             @Html.ActionLink("Добавить новый", "Create", null,
@@ -49,9 +54,10 @@
             @using (Html.BeginForm())
             {
                 <div class="row">
-                    <input id="SearchString" class="ml-3 form-control col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12" name="SearchString" placeholder="Категория или название" type="text" />
-                    @*@Html.TextBox("SearchString", "", new { @class = "form-control"})*@
-                    <input class="ml-3 mt-sm-3 mt-3 mt-md-0 mt-lf-0 mt-xl-0 col-xl-2 col-lg-2 col-md-2 col-sm-4 col-7 form-control btn-dark" type="submit" value="Искать" />
+                    <input id="SearchString" class="ml-3 form-control col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12"
+                           name="SearchString" placeholder="Категория или название" type="text" />                    
+                    <input class="ml-3 mt-sm-3 mt-3 mt-md-0 mt-lf-0 mt-xl-0 col-xl-2 col-lg-2 col-md-2 col-sm-4 col-7 form-control btn-dark"
+                           type="submit" value="Искать" />
                 </div>
             }
 

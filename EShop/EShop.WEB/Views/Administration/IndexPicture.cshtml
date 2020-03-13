@@ -1,0 +1,33 @@
+﻿@model IEnumerable<EShop.DAL.Entities.Picture>
+
+@{
+    ViewBag.Title = "IndexPicture";
+}
+
+<h2>IndexPicture</h2>
+
+<h2>Мои изображения</h2>
+
+<p>
+    @Html.ActionLink("Добавить изображение", "CreatePicture")
+</p>
+<table>
+    <tr>
+        <th>Название</th>
+        <th>Картинка</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PictureName)
+            </td>
+            <td>
+                @Html.Raw("<img style='width:80px; height:60px;' src=\"data:image/jpeg;base64,"
+                                    + Convert.ToBase64String(item.Image) + "\" />")
+            </td>
+        </tr>
+    }
+
+</table>

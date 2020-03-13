@@ -51,5 +51,7 @@ namespace EShop.DAL.Repositories
             if (product != null)
                 _context.Products.Remove(product);
         }
+
+       
     }
 }

@@ -1,0 +1,18 @@
+﻿@model EShop.WEB.Models.LoginModel
+
+@{
+    ViewBag.Title = "Подтверждение выхода";
+}
+
+    <div class="jumbotron">
+        <h2 class="">Вы точно хотите выйти из аккаунта?</h2>
+        @using (Html.BeginForm())
+        {
+
+            <input type="submit" value="Да" class="btn btn-outline-danger mr-2 justify-content-end" />
+            @Html.ActionLink("Отмена", "Index", "Home", null,
+            //new { returnUrl = Request.Url.PathAndQuery },
+            new { @class = "btn btn-outline-dark" })
+
+        }
+    </div>

@@ -14,30 +14,30 @@ namespace EShop.UnitTests
     [TestClass]
     public class UnitTest1
     {
-        [TestMethod]
-        public void Can_Paginate()
-        {
-            // Arrange
-            Mock<ProductRepository> mock = new Mock<ProductRepository>();
-            mock.Setup(m => m.GetAll().ToArray()).Returns(new Product[] {
-            new Product {ProductId = 1, Name = "P1"},
-            new Product {ProductId = 2, Name = "P2"},
-            new Product {ProductId = 3, Name = "P3"},
-            new Product {ProductId = 4, Name = "P4"},
-            new Product {ProductId = 5, Name = "P5"}
-            });
-            // create a controller and make the page size 3 items
-            ProductController controller = new ProductController();
-            controller.PageSize = 3;
-            // Act
-            IndexViewModel result
-            = (IndexViewModel)controller.Index(null, 2).Model;
-            // Assert
-            Product[] prodArray = result.Products.ToArray();
-            Assert.IsTrue(prodArray.Length == 2);
-            Assert.AreEqual(prodArray[0].Name, "P4");
-            Assert.AreEqual(prodArray[1].Name, "P5");
-        }
+        //[TestMethod]
+        //public void Can_Paginate()
+        //{
+        //    // Arrange
+        //    Mock<ProductRepository> mock = new Mock<ProductRepository>();
+        //    mock.Setup(m => m.GetAll().ToArray()).Returns(new Product[] {
+        //    new Product {ProductId = 1, Name = "P1"},
+        //    new Product {ProductId = 2, Name = "P2"},
+        //    new Product {ProductId = 3, Name = "P3"},
+        //    new Product {ProductId = 4, Name = "P4"},
+        //    new Product {ProductId = 5, Name = "P5"}
+        //    });
+        //    // create a controller and make the page size 3 items
+        //    ProductController controller = new ProductController();
+        //    controller.PageSize = 3;
+        //    // Act
+        //    IndexViewModel result
+        //    = (IndexViewModel)controller.Index(null, 2).Model;
+        //    // Assert
+        //    Product[] prodArray = result.Products.ToArray();
+        //    Assert.IsTrue(prodArray.Length == 2);
+        //    Assert.AreEqual(prodArray[0].Name, "P4");
+        //    Assert.AreEqual(prodArray[1].Name, "P5");
+        //}
 
         //    [TestMethod]
         //    public void Can_Send_Pagination_View_Model()

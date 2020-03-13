@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 
 using System.Threading.Tasks;
-//using System.Web.Mvc;
+using System.Web;
 using System.ComponentModel.DataAnnotations;
 
 namespace EShop.DAL.Entities
@@ -33,18 +33,25 @@ namespace EShop.DAL.Entities
         public string Color { get; set; }
         [Display(Name = "Размер")]
         [Range(0.01, double.MaxValue, ErrorMessage = "Размер должен быть больше 0")]
-
         public decimal Size { get; set; }
+
         [DataType(DataType.Date)]
         //[DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         [Display(Name = "Дата")]
-
         public DateTime Date { get; set; }
-        [Display(Name = "Категория")]
 
+        [Display(Name = "Категория")]
         public int CategoryId { get; set; }
 
         [Display(Name = "Категория")]
         public virtual Category Category { get; set; }
+
+        public string ImagePath { get; set; }
+
+        public int AmountOfPurchases { get; set; }
+
+        //public virtual Picture Picture { get; set; }
+
+        //public  ImageFile { get; set; }
     }
 }

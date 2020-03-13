@@ -1,0 +1,13 @@
+﻿@using System.Web.Security;
+
+
+<div class="text-right ">
+    @if (User.Identity.IsAuthenticated)
+    {
+        @Html.ActionLink("Выйти", "Exit", "Account", null, new { @class = " ml-2 btn btn-outline-danger" })
+    }
+    else
+    {
+        @Html.ActionLink("Войти", "Login", "Account", null, new { @class = " ml-2 btn btn-outline-info" })
+    }
+</div>

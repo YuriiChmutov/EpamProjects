@@ -10,7 +10,8 @@
 <h2>Добавить новый продукт</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Create", "Administration",
+    FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
@@ -18,14 +19,14 @@
     <div class="form-horizontal">
 
         <hr />
-        <div class="col-12">
+        <div class="jumbotron col-12">
             <div class="row">
 
                 <div class="col-lg-8 col-xl-8 col-md-12 col-sm-12">
                     <div class="row">
 
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                       
+
 
                         <div class="form-group col-12">
 
@@ -39,7 +40,7 @@
                         <div class="form-group col-12">
                             @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div>
-                                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control col-lg-12 col-xl-12 col-md-12 col-sm-12 col-12", @rows = 11 } })
+                                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control col-lg-12 col-xl-12 col-md-12 col-sm-12 col-12", @rows = 15 } })
                                 @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -90,6 +91,12 @@
                             </div>
                         </div>
 
+                        <div class="form-group col-12">
+                            <label class="control-label col-md-2">Фото</label>
+                            <div class="col-md-10">
+                                <input class="form-control-file" type="file" name="ImageFile" required />
+                            </div>
+                        </div>
 
                     </div>
                 </div>
@@ -98,16 +105,38 @@
 
     </div>
 
+
+    @*<fieldset>
+        <legend>Добавить изображение</legend>
+
+        <div class="editor-label">Название</div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PictureName)
+            @Html.ValidationMessageFor(model => model.PictureName)
+        </div>
+
+        <div class="editor-label">Файл изображения</div>
+        <div class="editor-field">
+            <input type="file" name="ImageFile" />
+        </div>
+
+
+    </fieldset>*@
+
+
     <div class="container">
         <div class="row">
             <div class="">
                 <input type="submit" value="Сохранить" class="btn btn-dark ml-4 ml-lg-3 ml-xl-3 ml-md-3 ml-sm-3" />
             </div>
-            @Html.ActionLink("Отменить", "Index", null, new {
+            @Html.ActionLink("Отменить", "Index", null, new
+            {
                     @class = "btn btn-light ml-2"
             })
         </div>
     </div>
+
+
 }
 
 
@@ -116,15 +145,15 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     <script>
-    //для того, чтобы EditorFor принимал decimal с запятой вместо точки
-    // переопределение валидации на стороне клиента
-    $.validator.methods.range = function (value, element, param) {
-        var globalizedValue = value.replace(",", ".");
-        return this.optional(element) || (globalizedValue >= param[0] && globalizedValue <= param[1]);
-    }
+        //для того, чтобы EditorFor принимал decimal с запятой вместо точки
+        // переопределение валидации на стороне клиента
+        $.validator.methods.range = function (value, element, param) {
+            var globalizedValue = value.replace(",", ".");
+            return this.optional(element) || (globalizedValue >= param[0] && globalizedValue <= param[1]);
+        }
 
-    $.validator.methods.number = function (value, element) {
-        return this.optional(element) || /^-?(?:\d+|\d{1,3}(?:[\s\.,]\d{3})+)(?:[\.,]\d+)?$/.test(value);
-    }
+        $.validator.methods.number = function (value, element) {
+            return this.optional(element) || /^-?(?:\d+|\d{1,3}(?:[\s\.,]\d{3})+)(?:[\.,]\d+)?$/.test(value);
+        }
     </script>
 }

@@ -10,9 +10,11 @@ using EShop.DAL.EF;
 using EShop.DAL.Entities;
 using EShop.DAL.Repositories;
 using EShop.WEB.Models;
+using EShop.WEB.Filters;
 
 namespace EShop.WEB.Controllers
 {
+    
     public class ProductController : Controller
     {
         EFUnitOfWork unit;
@@ -22,35 +24,60 @@ namespace EShop.WEB.Controllers
             unit = new EFUnitOfWork();
         }
 
-        // GET: Product
-        public ViewResult Index(string category, int page = 1)
+        //все товары с использованием пагинации (4 продукта на странице)
+        public ViewResult Index(string category, string searchProduct, int page = 1)
         {
-            IndexViewModel model = new IndexViewModel
+            IndexViewModel model;
+            if (!String.IsNullOrEmpty(searchProduct))
             {
-                Products = unit.Products.GetAll().ToList()
-                 .Where(p => category == null || p.Category.Name == category)
-                 .OrderBy(p => p.ProductId)  
+                model = new IndexViewModel
+                {
+                    Products = unit.Products.GetAll().ToList()
+                 .Where(p => p.Name.ToLower().Contains($"{searchProduct.ToLower()}")
+                 || p.Category.Name.ToLower().Contains($"{searchProduct.ToLower()}"))
                  .Skip((page - 1) * PageSize)
                  .Take(PageSize),
-                PageInfo = new PageInfo
+                    PageInfo = new PageInfo
+                    {
+                        CurrentPage = page,
+                        ItemsPerPage = PageSize,
+                        TotalItems = unit.Products.GetAll().Where(p => p.Name.ToLower().Contains($"{searchProduct.ToLower()}")).Count()
+                        
+                    },
+                    CurrentCategory = category
+                };
+            }
+            else
+            {
+                model = new IndexViewModel
                 {
-                    CurrentPage = page,
-                    ItemsPerPage = PageSize,
-                    TotalItems = category == null ?
-                        unit.Products.GetAll().Count() :
-                        unit.Products.GetAll().ToList().Where(e => e.Category.Name == category).Count()
-                },
-                CurrentCategory = category
-            };
+                    Products = unit.Products.GetAll().ToList()
+                    .Where(p => category == null || p.Category.Name == category)
+                    .OrderBy(p => p.ProductId)
+                    .Skip((page - 1) * PageSize)
+                    .Take(PageSize),
+                    PageInfo = new PageInfo
+                    {
+                        CurrentPage = page,
+                        ItemsPerPage = PageSize,
+                        TotalItems = category == null ?
+                           unit.Products.GetAll().Count() :
+                           unit.Products.GetAll().ToList().Where(e => e.Category.Name == category).Count()
+                    },
+                    CurrentCategory = category
+                };
+            }
+           
             return View(model);
         }
 
+        
         public ViewResult IndexAdmin()
         {
             return View(unit.Products.GetAll().ToList());
         }
 
-        // GET: Product/Details/5
+        //подробнее о конкретном продукте
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -66,34 +93,33 @@ namespace EShop.WEB.Controllers
             return View(product);
         }
 
-        // GET: Product/Create
+        //форма создания нового продукта
         public ActionResult Create()
         {
+            //выпадающий список категорий товаров
             ViewBag.CategoryId = new SelectList(unit.Categories.GetAll(), "CategoryId", "Name");
             return View();
         }
 
-        // POST: Product/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        //новый продукт заносится в бд
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ProductId,Name,Description,Price,Color,Size,Date,CategoryId")] Product product)
         {
+            //данные верные?
             if (ModelState.IsValid)
             {
-                //db.Products.Add(product);
-                //db.SaveChanges();
+                //создаю
                 unit.Products.Create(product);
                 unit.Save();
                 return RedirectToAction("Index");
             }
-
+            //иначе возвращаю форму создания
             ViewBag.CategoryId = new SelectList(unit.Categories.GetAll(), "CategoryId", "Name", product.CategoryId);
             return View(product);
         }
 
-        // GET: Product/Edit/5
+        //аналогия созданию
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -110,9 +136,7 @@ namespace EShop.WEB.Controllers
             return View(product);
         }
 
-        // POST: Product/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ProductId,Name,Description,Price,Color,Size,Date,CategoryId")] Product product)
@@ -121,15 +145,14 @@ namespace EShop.WEB.Controllers
             {
                 unit.Products.Update(product);
                 unit.Save();
-                //db.Entry(product).State = EntityState.Modified;
-                //db.SaveChanges();
+                
                 return RedirectToAction("Index");
             }
             ViewBag.CategoryId = new SelectList(unit.Categories.GetAll(), "CategoryId", "Name", product.CategoryId);
             return View(product);
         }
 
-        // GET: Product/Delete/5
+        
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -137,7 +160,7 @@ namespace EShop.WEB.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Product product = unit.Products.Get(id);
-            //Product product = db.Products.Find(id);
+            
             if (product == null)
             {
                 return HttpNotFound();
@@ -145,17 +168,15 @@ namespace EShop.WEB.Controllers
             return View(product);
         }
 
-        // POST: Product/Delete/5
+        
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Product product = unit.Products.Get(id);
-            //Product product = db.Products.Find(id);
-            unit.Products.Delete(id);
-            //db.Products.Remove(product);
+            Product product = unit.Products.Get(id);            
+            unit.Products.Delete(id);           
             unit.Save();
-            //db.SaveChanges();
+            
             return RedirectToAction("Index");
         }
 

@@ -1,0 +1,69 @@
+﻿@model IEnumerable<EShop.DAL.Entities.ExceptionDetail>
+
+@{
+    ViewBag.Title = "Список ошибок";
+}
+
+    <div class="container-fluid">
+       
+        <h3 class="row">
+
+            @Html.ActionLink("Все товары", "Index", "Administration", new { @class = "col-xl-3 col-lg-6 col-md-12 col-sm-12 col-12" })
+
+            @Html.ActionLink("Пользователи", "CheckUsers", "Administration", new { @class = "col-xl-3 col-lg-6 col-md-12 col-sm-12 col-12" })
+            @Html.ActionLink("Список заказов", "ListOfOrders", "Administration", new { @class = "col-xl-3 col-lg-6 col-md-12 col-sm-12 col-12" })
+            <span class = "col-xl-3 col-lg-6 col-md-12 col-sm-12 col-12"> Журнал ошибок</span>
+        </h3>
+        
+    </div>
+
+
+<div class="panel panel-default">
+
+    <div class="panel-heading mb-3 ml-3 ">
+
+    </div>
+    <div class="panel-body">
+        <table class="table table-striped table-condensed table-bordered">
+            <tr>
+                <th class="text-center ">
+
+                   <span>Номер</span>
+                </th>
+                <th>
+                   <span>Сообщение</span>
+                </th>
+                <th>
+                    <span>Контроллер</span>
+                </th>
+                <th>
+                    <span>Action</span>
+                </th>
+                <th>
+                    <span>Стэк исключения</span>
+                </th>
+                <th>
+                    <span>Время</span>
+                </th> 
+                
+            </tr>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td class="text-center">@item.Id</td>
+                <td class="">@item.ExceptionMessage</td>
+
+                <td class="">@item.ControllerName</td>
+                <td class=""> @item.ActionName</td>
+                <td class=""> @item.StackTrace</td>
+                <td class=""> @item.Date</td>
+            </tr>
+            }
+        </table>
+    </div>
+
+</div>
+@using (Html.BeginForm())
+{
+<input type="submit"  value="Удалить" class="btn btn-danger mr-2" />
+}

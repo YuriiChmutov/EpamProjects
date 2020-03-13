@@ -9,8 +9,10 @@ using EShop.DAL.Repositories;
 
 namespace EShop.WEB.Models
 {
+    //ModelView для страницы "Товары"
     public class IndexViewModel
     {
+        
         public IEnumerable<Product> Products { get; set; }
         public PageInfo PageInfo { get; set; }
         public string CurrentCategory { get; set; }

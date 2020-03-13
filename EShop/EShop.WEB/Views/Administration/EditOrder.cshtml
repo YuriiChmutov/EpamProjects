@@ -1,0 +1,64 @@
+﻿@model EShop.DAL.Entities.Order
+@using EShop.WEB.Models
+
+@{
+    ViewBag.Title = "Изменить статус заказа";
+}
+
+    <div class="jumbotron">
+        <h2>Изменение статуса заказа</h2>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h4>Заказ № @Model.Id</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.Id)
+                @Html.HiddenFor(model => model.UserId)
+                @Html.HiddenFor(model => model.Value)
+                @Html.HiddenFor(model => model.Name)
+                
+
+                <div class="form-group">
+                    <label class="font-weight-bold">Имя заказчика: </label>
+                    @Html.DisplayFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+
+                </div>
+
+                <div class="form-group">
+                    <label class="font-weight-bold">Заказ и его стоимость: </label>
+                    @Html.DisplayFor(model => model.Value, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+
+                <div class="form-group">
+                    <label class="font-weight-bold">Дата и время заказа: </label>
+                    @Html.DisplayFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+
+                <div class="form-group">
+                    <label class="font-weight-bold">Отображать заказчику? </label>
+                    <span class="checkbox">
+                        @Html.EditorFor(model => model.Visible)
+                        @Html.ValidationMessageFor(model => model.Visible, "", new { @class = "text-danger" })
+                    </span>
+                </div>
+
+                <div class="form-group">
+                    <label class="font-weight-bold">Статус заказа</label>
+                    @Html.DropDownList("StatusOrder", new SelectList(Enum.GetValues(typeof(Status))),
+                   Model.Status, new { @class = "form-control" })
+                </div>
+
+
+                <div class="form-group">
+
+                    <input type="submit" value="Сохранить" class="btn btn-primary" />
+                    @Html.ActionLink("Назад", "ListOfOrders",null, new { @class = "ml-2 btn btn-light"})
+                </div>
+            </div>
+        }
+    </div>
+

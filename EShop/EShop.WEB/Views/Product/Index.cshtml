@@ -1,7 +1,7 @@
 ﻿@model EShop.WEB.Models.IndexViewModel
 @using EShop.WEB.HtmlHelpers
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Товары " + Model.CurrentCategory;
 }
 
 @*<div class="col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-3">*@
@@ -11,10 +11,10 @@
     <div class="container-fluid">
         <div class="row">
 
-            <div id="categories" class="col-xl-3 col-lg-3 col-md-3 col-sm-3" style="min-height: 400px">
+            <div id="categories" class="col-xl-3 col-lg-3 col-md-5 col-sm-4" style="min-height: 400px">
                 @Html.Action("Menu", "Nav")
             </div>
-            <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 bg-light">
+            <div class="col-xl-9 col-lg-9 col-md-6 col-sm-8 bg-light">
                 <div class="row">
                     @foreach (var p in Model.Products)
                     {

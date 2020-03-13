@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "QuestionUser";
+}
+
+    <div class="jumbotron ">
+        <h2>Вам необходимо войти в аккаунт</h2>
+
+        @{ var action = ViewBag.Action; var controller = ViewBag.Controller; }
+        @*@Html.ActionLink("Вернутся", action, controller) |*@
+        <a class="btn btn-outline-dark " href="/@controller/@action"><span class="text-primary">Вернуться</span></a>
+        @Html.ActionLink("Войти", "Login", "Account",
+        new { returnUrl = ViewBag.returnUrl }, new { @class = "btn btn-outline-info" })
+    </div>
+

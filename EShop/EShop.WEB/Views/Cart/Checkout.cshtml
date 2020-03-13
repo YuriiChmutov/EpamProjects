@@ -9,69 +9,84 @@
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/jquerymask")
 }
-
-
-<h2>Оформление заказа</h2>
-
-<p>Введите ваши данные и мы отправим ваш заказ!</p>
 @using (Html.BeginForm())
 {
-    @Html.ValidationSummary()
-    <h3>Отправить кому</h3>
-    <div class="form-group col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
-        <label>Ваше имя</label>
-        @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
-        @Html.ValidationMessageFor(x => x.Name)
-    </div>
+    <div class="jumbotron">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="form-group col-12 col-sm-12 col-md-8 col-lg-6 col-xl-6">
+                    <h2>Оформление заказа</h2>
 
-    <h3>Подробнее</h3>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="form-group col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
-                <label>Адрес</label>
-                @Html.TextBoxFor(x => x.Line1, new { @class = "form-control" })
-                @Html.ValidationMessageFor(x => x.Line1)
-            </div>
-            <div class="form-group col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
-                <label>Телефон</label>
+                    <p>Введите ваши данные и мы отправим ваш заказ!</p>
 
-                @Html.TextBoxFor(x => x.Telephone, new { @class = "form-control", mask = "(999) 99-999-99-99" })
-                @Html.ValidationMessageFor(x => x.Telephone)
+                    @Html.ValidationSummary()
+                    <h3>Отправить кому</h3>
 
-            </div>
 
-            <div class="form-group col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
-                <label>Город</label>
-                @Html.TextBoxFor(x => x.City, new { @class = "form-control" })
-                @Html.ValidationMessageFor(x => x.City)
-            </div>
-            <div class="form-group col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
-                <label>Область</label>
-                @Html.TextBoxFor(x => x.State, new { @class = "form-control" })
-                @Html.ValidationMessageFor(x => x.State)
-            </div>
-            <div class="form-group col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
-                <label>Почтовый индекс</label>
-                @Html.TextBoxFor(x => x.Zip, new { @class = "form-control" })
-                @Html.ValidationMessageFor(x => x.Zip)
-            </div>
-            <div class="form-group col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
-                <label>Страна</label>
-                @Html.TextBoxFor(x => x.Country, new { @class = "form-control" })
-                @Html.ValidationMessageFor(x => x.Country)
+
+                    <label>Ваше имя</label>
+                    @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.Name)
+
+                </div>
+                <div class="ml-3 col-5 d-sm-none d-none d-lg-block d-md-none">
+                    <img class="" src="~/Content/Images/Logos/Logo-200.png" />
+                </div>
             </div>
         </div>
-    </div>
-    <h3>Бонусы</h3>
-    <div class="checkbox ">
-        <label>
-            @Html.EditorFor(x => x.GiftWrap)
-            <span> Упаковывать выбранные продукты</span>
-        </label>
+
+        
+        <div class="container-fluid">
+            <h3>Подробнее</h3>
+            <div class="row">
+                <div class="form-group col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+                    <label>Адрес</label>
+                    @Html.TextBoxFor(x => x.Line1, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.Line1)
+                </div>
+                <div class="form-group col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+                    <label>Телефон</label>
+
+                    @Html.TextBoxFor(x => x.Telephone, new { @class = "form-control", mask = "(999) 99-999-99-99" })
+                    @Html.ValidationMessageFor(x => x.Telephone)
+
+                </div>
+
+                <div class="form-group col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+                    <label>Город</label>
+                    @Html.TextBoxFor(x => x.City, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.City)
+                </div>
+                <div class="form-group col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+                    <label>Область</label>
+                    @Html.TextBoxFor(x => x.State, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.State)
+                </div>
+                <div class="form-group col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+                    <label>Почтовый индекс</label>
+                    @Html.TextBoxFor(x => x.Zip, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.Zip)
+                </div>
+                <div class="form-group col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+                    <label>Страна</label>
+                    @Html.TextBoxFor(x => x.Country, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.Country)
+                </div>
+            </div>
+        </div>
+
+        <h3 class="ml-3">Бонусы</h3>
+        <div class="checkbox ml-3">
+            <label>
+                @Html.EditorFor(x => x.GiftWrap)
+                <span> Упаковывать выбранные продукты</span>
+            </label>
+        </div>
     </div>
     <div class="text-center">
         <input class="btn btn-primary" type="submit" value="Заказать" />
     </div>
 
 }
+
 

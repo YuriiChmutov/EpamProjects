@@ -7,6 +7,10 @@ using System.Web.Mvc;
 
 namespace EShop.WEB.Infrastructure.Binders
 {
+    /// <summary>
+    /// Кдасс для создания сессии корзины покупок
+    /// Так же класс теперь является Binder-ом (Global.asax)
+    /// </summary>
     public class CartModelBinder: IModelBinder
     {
         private const string sessionKey = "Cart";

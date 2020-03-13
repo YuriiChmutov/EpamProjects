@@ -22,6 +22,7 @@ namespace EShop.WEB.Controllers
             unit = new EFUnitOfWork();
         }
 
+        //частичное представление бокового меню
         public PartialViewResult Menu(string category = null)
         {
             ViewBag.SelectedCategory = category;

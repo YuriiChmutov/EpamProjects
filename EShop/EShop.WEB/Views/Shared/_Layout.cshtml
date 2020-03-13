@@ -17,39 +17,51 @@
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="~/Home/Index"><img src="~/Content/Images/Logos/Logo-120-cropped.png" /></a>
+        
+        <a class="navbar-brand" href="~/Home/Index"><img src="~/Content/Images/Logos/Logo-64.png" /></a>
         <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="navbar-collapse collapse" id="navbarColor03" style="">
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav mr-auto ">
                 <li class="nav-item active">
                     <a class="nav-link" href="~/Home/Index">Главная <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="~/Product/Index">Товары</a>
                 </li>
+
                 <li class="nav-item">
-                    <a class="nav-link" href="~/Product/Create">Создать</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">О нас</a>
+                    <a class="nav-link" href="~/Account/OrdersList">Кабинет</a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0 col-6">
-                <input class="form-control mr-sm-2 col-12 col-sm-12 col-md-10 col-lg-8 col-xl-8" type="text" placeholder="Я ищу... (Например, Телефон)">
-                <button class="btn btn-secondary my-2 my-sm-0 " type="submit">Искать</button>
-            </form>
+           
+            <form class="form-inline my-2 my-lg-0 col-xl-5 col-lg-4 col-md-3  ">
+                @using (Html.BeginForm("Index", "Product"))
+                {
+                    <input class="form-control mr-sm-2 col-7 " name="searchProduct" type="text" placeholder="Я ищу... (Например, Apple)">
+                    <input class="btn btn-secondary my-2 my-sm-0 " type="submit" value="Искать"/>
+                }
+                </form>
+            
             @Html.Action("Summary", "Cart")
+            @Html.Action("IsAuthorised", "Account")
+
         </div>
     </nav>
 
+    @RenderSection("login", false)
     @RenderSection("saved", false)
     @RenderSection("create", false)
     @RenderSection("delete", false)
+   
+    
+
+
 
     <div class="container body-content">
+
         @RenderBody()
         @*<hr />*@
 
@@ -66,11 +78,10 @@
 
                 <!-- Grid column -->
                 <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-                    <h6 class="text-uppercase mb-4 font-weight-bold">Company name</h6>
+                    <h6 class="text-uppercase mb-4 font-weight-bold">EShop market</h6>
                     <p>
-                        Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet,
-                        consectetur
-                        adipisicing elit.
+                        Здесь вы сможете найти технику для дома, мобильные устройства, гаджеты и многое другое.
+                        Покупая у нас вы совершаете выгодную сделку. Давайте дружить!
                     </p>
                 </div>
                 <!-- Grid column -->
@@ -79,18 +90,18 @@
 
                 <!-- Grid column -->
                 <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-                    <h6 class="text-uppercase mb-4 font-weight-bold">Products</h6>
+                    <h6 class="text-uppercase mb-4 font-weight-bold">Товары</h6>
                     <p>
-                        <a href="#!">MDBootstrap</a>
+                        <a href="~/%D0%A2%D0%B5%D0%BB%D0%B5%D0%B2%D0%B8%D0%B7%D0%BE%D1%80%D1%8B">Телевизоры</a>
                     </p>
                     <p>
-                        <a href="#!">MDWordPress</a>
+                        <a href="~/%D0%A2%D0%B5%D0%BB%D0%B5%D1%84%D0%BE%D0%BD%D1%8B">Телефоны</a>
                     </p>
                     <p>
-                        <a href="#!">BrandFlow</a>
+                        <a href="~/%D0%9D%D0%BE%D1%83%D1%82%D0%B1%D1%83%D0%BA%D0%B8">Ноутбуки</a>
                     </p>
                     <p>
-                        <a href="#!">Bootstrap Angular</a>
+                        <a href="~/Умные часы и Фитнесс браслеты">Умные часы</a>
                     </p>
                 </div>
                 <!-- Grid column -->
@@ -99,18 +110,20 @@
 
                 <!-- Grid column -->
                 <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
-                    <h6 class="text-uppercase mb-4 font-weight-bold">Useful links</h6>
+                    <h6 class="text-uppercase mb-4 font-weight-bold">Полезные ссылки</h6>
                     <p>
-                        <a href="#!">Your Account</a>
+                        <a href="~/Account/OrdersList">Кабинет</a>
                     </p>
                     <p>
-                        <a href="#!">Become an Affiliate</a>
+                        @Html.ActionLink("Корзина", "Index", "Cart", null,
+                            new { returnUrl = Request.Url.PathAndQuery })
+                       
                     </p>
                     <p>
-                        <a href="#!">Shipping Rates</a>
+                        <a href="~/Home/Index/#leaders">Лидеры продаж</a>
                     </p>
                     <p>
-                        <a href="#!">Help</a>
+                        <a href="~/Home/Index">На главную</a>
                     </p>
                 </div>
 
@@ -119,19 +132,19 @@
 
                 <!-- Grid column -->
                 <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
-                    <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
+                    <h6 class="text-uppercase mb-4 font-weight-bold">Контакты</h6>
                     <p>
-                        <i class="fas fa-home"></i> New York, NY 10012, US
+                        <i class="fas fa-home"></i> ул. Сумская 10
 
                     </p>
                     <p>
-                        <i class="fas fa-envelope"></i> info@gmail.com
+                        <i class="fas fa-envelope"></i> vad4807@gmil.com
                     </p>
                     <p>
-                        <i class="fas fa-phone"></i> + 01 234 567 88
+                        <i class="fas fa-phone"></i> + (380) 98 410 72 12
                     </p>
                     <p>
-                        <i class="fas fa-print"></i> + 01 234 567 89
+                        <i class="fas fa-print"></i> + (380) 57 728 06 28
                     </p>
                 </div>
                 <!-- Grid column -->
@@ -150,8 +163,8 @@
                     <!--Copyright-->
                     <p class="text-center text-md-left">
                         © 2020 Copyright:
-                        <a href="https://mdbootstrap.com/">
-                            <strong> MDBootstrap.com</strong>
+                        <a href="">
+                            <strong> YuriiChmutov</strong>
                         </a>
                     </p>
 
@@ -200,7 +213,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    
+
     @RenderSection("scripts", required: false)
 </body>
 </html>

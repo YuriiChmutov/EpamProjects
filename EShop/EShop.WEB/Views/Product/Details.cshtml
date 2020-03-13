@@ -1,74 +1,105 @@
 ﻿@model EShop.DAL.Entities.Product
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Подробнее";
 }
 
-<h2>Details</h2>
 
+
+<h3>К вашему вниманию @Model.Name</h3>
 <div>
-    <h4>Product</h4>
+
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Category.Name)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Category.Name)
-        </dd>
+    <div class="row justify-content-around">
+        <div class="jumbotron col-lg-5 col-xl-5 col-md-5 col-sm-12 col-12">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Category.Name)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Category.Name)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Description)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Description)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Price)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Color)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Price)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Color)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Color)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Size)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Color)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Size)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Size)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Date)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Size)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Date)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Date)
+                </dt>
 
-    </dl>
+                <dd>
+                    @Html.DisplayFor(model => model.Date)
+                </dd>
+
+            </dl>
+        </div>
+
+        <div class="jumbotron bg-transparent col-lg-5 col-xl-5 col-md-5 col-sm-12 col-12">
+            <img src="@Url.Content(Model.ImagePath)" class="" 
+                 style="max-height: 500px;max-width:100%; margin: 0 auto; display:block;" 
+                 alt="Фото @Model.Name">
+        </div>
+    </div>
+
+   
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ProductId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+
+
+
+
+
+@using (Html.BeginForm("AddToCart", "Cart"))
+{
+
+    @Html.HiddenFor(x => x.ProductId)
+    @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+    <div class="container ">
+        <div class="row">
+            <input type="submit" class="form-control btn-success  col-lg-2 col-xl-2 col-md-4 col-sm-5 col-12 mb-2 mb-sm-0 mb-md-0 mb-xl-0 mb-lg-0 mr-2" value="В корзину" />
+            @Html.ActionLink("Назад", "Index", null, new { @class = "btn btn-light col-lg-2 col-xl-2 col-md-4 col-sm-5 col-12  " })
+        </div>
+    </div>
+}
+
+
+
