@@ -1,0 +1,32 @@
+﻿@*@model CodeFirst.Models.Article*@
+@model CodeFirst.Models.Article
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2 class="text-center mt-2">Подробнее</h2>
+
+<div class="card mb-3">
+    <h3 class="card-header">@ViewBag.article.NameOfNews</h3>
+    <div class="card-body">
+        <h5 class="card-title">@ViewBag.article.Special</h5>
+        <h6 class="card-subtitle text-muted">@ViewBag.article.Subtitle</h6>
+    </div>
+    <img src="@ViewBag.article.Link" alt="Card image">
+    <div class="card-body">
+        <p class="card-text">
+            @ViewBag.article.Content
+            @foreach (var item in Model.Tags)
+            {          
+                @Html.ActionLink(@item.Text, "#")
+            }
+
+
+        </p>
+    </div>
+    <div class="card-footer text-muted">
+        @ViewBag.article.Date.Day/@ViewBag.article.Date.Month/@ViewBag.article.Date.Year
+    </div>
+</div>
+
+<div class="text-center mb-3"> @Html.ActionLink("Назад", "index")</div>
