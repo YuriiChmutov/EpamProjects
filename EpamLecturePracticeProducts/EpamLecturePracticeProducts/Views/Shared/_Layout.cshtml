@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+<link href="~/Content/Site.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <header>
+        <div class="container-fluid">
+            <div class="navbar navbar-expand-lg navbar-dark bg-primary">
+
+                <div class="col-4 bg-primary">
+                    <a class="navbar-brand" name="top" href="#">
+                        <img src="~/Content/images/brand-book-50px.png" />
+                    </a>
+                </div>
+                <div class="col-1 bg-primary"></div>
+
+                <div class="col-7 ">
+                    <h1>BOOKS</h1>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+
+    <div class="myBody">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-1"></div>
+                <div class="leftColumn col-2">
+                    <div class="jumbotron ">
+                        <div class=" text-center"><h1>Menu</h1></div>
+                        <div class="text-center">
+                            <ul class="nav navbar-nav">
+                                <li>@Html.ActionLink("Home page", "Index", "Product", new { @class = "btn btn-info mt-2" })</li>
+                                <li>@Html.ActionLink("Show all", "ShowAll", "Product", new { @class = "btn btn-info mt-2" })</li>
+                                <li>@Html.ActionLink("Add book", "AddProduct", "Home", new { @class = "btn btn-info mt-2" })</li>
+                                <li>@Html.ActionLink("Add ganre", "AddGanre", "Home", new { @class = "btn btn-info mt-2" })</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mainColumn col-5">
+                    <div class="jumbotron bg-primary ">
+
+                        @RenderBody()
+
+                    </div>
+                </div>
+
+                <div class="rightColumn col-3">
+                    <div class="jumbotron">
+                        <div class=" text-center"><h1>Links</h1></div>
+                        <div class="text-center">
+                            <ul class="nav navbar-nav">
+                                <li class="mt-2"><a href="https://bootswatch.com/sketchy/" class="btn btn-primary"><h3>Bootstrap</h3></a></li>
+                                <li class="mt-2"><a href="https://getbootstrap.com/" class="btn btn-primary "><h3>Bootswatch</h3></a></li>
+                                <li class="mt-2"><a href="https://www.google.com/" class="btn btn-primary"><h3>Google</h3></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-1"></div>
+            </div>
+        </div>
+    </div>
+
+
+
+    
+        <footer>
+
+            <div class="container-fluid">
+
+                <div class="navbar navbar-expand-lg navbar-dark bg-primary" style="min-height:100px">
+                    <div class="col-6">
+                        &copy; @DateTime.Now.Year - Yurii Chmutov
+                    </div>
+
+                    <div class="col-4"></div>
+
+                    <div class="arrowUp col-2">
+                        <a href="#top">
+                            <img src="~/Content/images/arrow-up-icon-64px.png" />
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </footer>
+   
+</body>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+</html>

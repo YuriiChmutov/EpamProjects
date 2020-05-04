@@ -1,0 +1,64 @@
+﻿@model IEnumerable<global::Entity.DLL.Entities.Book>
+@{
+    ViewBag.Title = "ShowAll";
+}
+
+
+
+<h2 class="text-center">Show all</h2>
+
+    @foreach (var item in Model)
+    {
+        switch (item.GanreId)
+        {
+            case (1):
+                <div class="card text-white bg-danger mb-3" style="max-width: 20rem;">
+                    <div class="card-header">@Html.DisplayFor(m => item.Title)</div>
+                    <div class="card-body">
+                        <h4 class="card-title">@Html.DisplayFor(m => item.Price) грн.</h4>
+                        <p class="card-text">
+                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id }) |
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                        </p>
+                    </div>
+                </div>
+                break;
+            case (2):
+                <div class="card text-white bg-warning mb-3" style="max-width: 20rem;">
+                    <div class="card-header">@Html.DisplayFor(m => item.Title)</div>
+                    <div class="card-body">
+                        <h4 class="card-title">@Html.DisplayFor(m => item.Price) грн.</h4>
+                        <p class="card-text">
+                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id }) |
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                        </p>
+                    </div>
+                </div>
+                break;
+            default:
+                <div class="card text-white bg-info mb-3" style="max-width: 20rem;">
+                    <div class="card-header">@Html.DisplayFor(m => item.Title)</div>
+                    <div class="card-body">
+                        <h4 class="card-title">@Html.DisplayFor(m => item.Price) грн.</h4>
+                        <p class="card-text">
+                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id }) |
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                        </p>
+                    </div>
+                </div>
+                break;
+
+        }
+
+
+    }
+
+
+
+
+
+
+

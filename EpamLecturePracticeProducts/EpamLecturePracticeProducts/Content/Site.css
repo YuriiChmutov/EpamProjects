@@ -1,0 +1,130 @@
+﻿
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 1px;
+    padding-right: 1px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+
+
+header .col-4{
+    min-width:200px;
+    padding-right:10px;
+}
+
+header h1{
+   
+   
+   
+   margin-top:10px;
+   
+}
+
+.myBody{
+    margin-top:20px;
+   
+   
+   
+}
+
+
+    .myBody .col-1 {
+        min-width:100px;
+    }
+    /*.leftColumn {
+    background-color: aquamarine;
+    min-width: 20%;
+    min-height: 480px;
+    border: solid;
+    border-width: 2px;
+    border-color: black;
+    border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;
+}*/
+    /*.rightColumn {
+    background-color: #ffc107;
+    min-width: 30%;
+    min-height: 480px;
+    border: solid;
+    border-width: 2px;
+    border-color: black;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+}*/
+    /*.mainColumn {
+    background-color: burlywood;
+    min-width: 50%;
+    min-height: 480px;
+    border-bottom: solid;
+    border-bottom-width: 2px;
+    border-bottom-color: black;
+    border-top: solid;
+    border-top-width: 2px;
+    border-top-color: black;
+   
+}*/
+    .leftColumn .jumbotron {
+    min-height: 480px;
+   
+    background-color: aquamarine;
+    
+    
+}
+
+.mainColumn .jumbotron {
+    min-height: 480px;
+    
+    
+    
+}
+
+.rightColumn .jumbotron {
+    background-color: #ffc107;
+    
+    min-height: 480px;
+}
+
+
+
+    footer img:hover {
+        transition: 0.5s;
+        transform: scale(1.2);
+    }
+
+
+.copyName p{
+    margin-left: 20px;
+    margin-top:20px;
+}
+
+.arrowUp{
+  
+}
+
+#productName, #productDescription{
+    margin:auto;
+}
+
+/*.productInfoClass{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}*/
+

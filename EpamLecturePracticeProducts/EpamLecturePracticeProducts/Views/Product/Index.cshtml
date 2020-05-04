@@ -1,0 +1,29 @@
+﻿@model Entity.DAL.Entities.IndexViewModel
+@using EpamLecturePracticeProducts.Helpers
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="text-center">Home page</h2>
+
+
+<table class="table">
+    <tr>
+        <td>Модель</td>
+        <td>Производитель</td>
+    </tr>
+    @foreach (var item in Model.Books)
+    {
+        <tr>
+            <td>@item.Title</td>
+            <td>@item.Author</td>
+        </tr>
+    }
+</table>
+<br />
+<div class="btn-group">
+    @Html.PageLinks(Model.PageInfo, x => Url.Action("Index", new { page = x }))
+</div>
+
+
+

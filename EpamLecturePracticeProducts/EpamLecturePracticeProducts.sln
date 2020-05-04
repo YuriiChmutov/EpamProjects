@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EpamLecturePracticeProducts", "EpamLecturePracticeProducts\EpamLecturePracticeProducts.csproj", "{3EC7EA76-D4DD-408F-989F-3463B3317C2E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entity.DLL", "Entity.DAL\Entity.DLL.csproj", "{CEF2D67E-C2D6-4B09-A933-F8B32E334008}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3EC7EA76-D4DD-408F-989F-3463B3317C2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EC7EA76-D4DD-408F-989F-3463B3317C2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EC7EA76-D4DD-408F-989F-3463B3317C2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EC7EA76-D4DD-408F-989F-3463B3317C2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEF2D67E-C2D6-4B09-A933-F8B32E334008}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEF2D67E-C2D6-4B09-A933-F8B32E334008}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEF2D67E-C2D6-4B09-A933-F8B32E334008}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEF2D67E-C2D6-4B09-A933-F8B32E334008}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4BDC87A8-8E63-48F4-AF9D-84D6F6F7B984}
+	EndGlobalSection
+EndGlobal

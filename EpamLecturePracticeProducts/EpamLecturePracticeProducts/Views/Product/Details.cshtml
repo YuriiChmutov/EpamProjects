@@ -1,0 +1,19 @@
+﻿@model Entity.DLL.Entities.Book
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2 class="text-center">Details</h2>
+
+
+
+<h2>@Model.Title</h2>
+<p>@Model.Author</p>
+<p><small>@Model.Description</small></p>
+<p class="text-right"><strong>@Model.Price</strong>.</p>
+<p><em>@Model.Ganre.Title</em>.</p>
+<p>@Model.Ganre.Description</p>
+
+@Html.ActionLink("Back", "ShowAll")
+

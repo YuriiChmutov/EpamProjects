@@ -1,0 +1,21 @@
+﻿@model Entity.DLL.Entities.Book
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2 class="text-center">Delete</h2>
+<h3 class="text-center">Are you shure?</h3>
+
+
+<h2>@Model.Title</h2>
+<p>@Model.Author</p>
+<p><small>@Model.Description</small></p>
+<p class="text-right"><strong>@Model.Price</strong>.</p>
+<p><em>@Model.Ganre.Title</em>.</p>
+<p>@Model.Ganre.Description</p>
+@Html.ActionLink("Back", "ShowAll")
+@using (Html.BeginForm())
+{
+    <input type="submit" class="btn btn-danger" value="Delete" />
+}
